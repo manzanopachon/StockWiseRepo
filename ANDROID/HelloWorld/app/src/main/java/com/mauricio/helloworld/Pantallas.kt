@@ -195,7 +195,7 @@ fun RegistroScreen(onRegisterSuccess: () -> Unit) {
                                     }
                                 } else {
                                     isLoading = false
-                                    errorMessage = "Error al buscar restaurante"
+                                    errorMessage = "Elige un restaurante correcto"
                                 }
                             }
 
