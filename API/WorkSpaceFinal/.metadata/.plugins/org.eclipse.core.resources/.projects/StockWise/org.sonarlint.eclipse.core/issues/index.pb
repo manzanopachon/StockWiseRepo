@@ -61,3 +61,7 @@ g
 7src/main/java/com/dam/restaurante/dto/LoginRequest.java,1\c\1c4605419ea370e9437f79e5227bc7f2aca63536
 t
 Dsrc/main/java/com/dam/restaurante/dto/CodigoVerificacionRequest.java,3\0\305f168252fc1744247e1e720e5649c5fdb51846
+q
+Asrc/main/java/com/dam/restaurante/controller/PlatoController.java,d\f\df672626f502d0c099e1edc4985481dd5d1ddcc4
+w
+Gsrc/main/java/com/dam/restaurante/controller/IngredienteController.java,d\d\dd070ad59afeb6a2a1ecebfbda27b6fee178f777
