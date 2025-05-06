@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.data-jpa=2
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mariadb=2
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mysql=2
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.security=2
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=StockWise
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.4.4
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Proyecto Final
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.dam
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=17
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=StockWise
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.dam
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=war
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=MAVEN
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=0.0.1-SNAPSHOT
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n

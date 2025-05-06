@@ -1,0 +1,80 @@
+package com.dam.restaurante.service;
+
+import com.dam.restaurante.dto.PlatoDTO;
+import com.dam.restaurante.model.Plato;
+import com.dam.restaurante.repository.PlatoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+public class PlatoService {
+
+    @Autowired
+    private PlatoRepository platoRepository;
+
+    public List<PlatoDTO> obtenerTodos() {
+        return platoRepository.findAll().stream()
+                .map(this::convertirAPlatoDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<PlatoDTO> obtenerPorRestauranteId(Long restauranteId) {
+        return platoRepository.findAll().stream()
+                .filter(p -> p.getRestaurante().getId().equals(restauranteId))
+                .map(this::convertirAPlatoDTO)
+                .collect(Collectors.toList());
+    }
+
+    public PlatoDTO obtenerPorId(Long id) {
+        Optional<Plato> plato = platoRepository.findById(id);
+        return plato.map(this::convertirAPlatoDTO).orElse(null);
+    }
+
+    public PlatoDTO crearPlato(PlatoDTO dto) {
+        Plato nuevo = new Plato();
+        nuevo.setNombre(dto.getNombre());
+        nuevo.setDescripcion(dto.getDescripcion());
+        nuevo.setPrecio(dto.getPrecio());
+        nuevo.setCategoria(dto.getCategoria());
+
+        // Aquí asumes que tienes una relación con Restaurante (busca por ID)
+        nuevo.setRestaurante(new com.dam.restaurante.model.Restaurante(dto.getRestauranteId()));
+
+        Plato guardado = platoRepository.save(nuevo);
+        return convertirAPlatoDTO(guardado);
+    }
+
+    public PlatoDTO actualizarPlato(Long id, PlatoDTO dto) {
+        Optional<Plato> optional = platoRepository.findById(id);
+        if (optional.isPresent()) {
+            Plato p = optional.get();
+            p.setNombre(dto.getNombre());
+            p.setDescripcion(dto.getDescripcion());
+            p.setPrecio(dto.getPrecio());
+            p.setCategoria(dto.getCategoria());
+            p.setRestaurante(new com.dam.restaurante.model.Restaurante(dto.getRestauranteId()));
+            return convertirAPlatoDTO(platoRepository.save(p));
+        }
+        return null;
+    }
+
+    public void eliminarPlato(Long id) {
+        platoRepository.deleteById(id);
+    }
+
+    private PlatoDTO convertirAPlatoDTO(Plato p) {
+        return new PlatoDTO(
+                p.getId(),
+                p.getNombre(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getCategoria(),
+                p.getRestaurante().getId(),
+                null // puedes agregar ingredientes si los necesitas
+        );
+    }
+}

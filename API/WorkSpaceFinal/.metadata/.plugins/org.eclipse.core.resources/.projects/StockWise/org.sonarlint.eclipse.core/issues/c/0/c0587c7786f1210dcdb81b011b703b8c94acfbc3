@@ -1,0 +1,8 @@
+
+‹	java:S117G"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8–®¬žæ2b 4c882dcb24bcb1bc225391a602feca7ch
+Y
+java:S2119/"Save and re-use this "Random".8–®¬žæ2b 64663f4646781c9c0110838b905daa23h
+€	java:S112B"FDefine and throw a dedicated exception instead of using a generic one.8–®¬žæ2b 15452a9b0f2356c3dabe720a67728b3dh
+€	java:S112L"FDefine and throw a dedicated exception instead of using a generic one.8–®¬žæ2b 15452a9b0f2356c3dabe720a67728b3dh
+}
+java:S1128"BRemove this unused import 'com.dam.restaurante.model.Restaurante'.8é¡öÚè2b d552082f420e424486f2f0edec1c536bh

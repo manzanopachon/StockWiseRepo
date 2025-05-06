@@ -1,0 +1,76 @@
+package com.dam.restaurante.controller;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dam.restaurante.dto.PlatoDTO;
+import com.dam.restaurante.repository.CategoriaRepository;
+import com.dam.restaurante.service.PlatoService;
+
+@RestController
+@RequestMapping("/api/platos")
+@CrossOrigin(origins = "*")
+public class PlatoController {
+
+    @Autowired
+    private PlatoService platoService;
+
+    @GetMapping
+    public List<PlatoDTO> listarPlatos() {
+        return platoService.obtenerTodos();
+    }
+
+    public List<PlatoDTO> obtenerTodos() {
+    private CategoriaRepository categoriaRepository;
+        return platoRepository.findAll().stream()
+                .map(this::convertirAPlatoDTO)
+                .collect(Collectors.toList());
+    }
+    
+    @GetMapping("/restaurante/{restauranteId}")
+    public List<PlatoDTO> listarPorRestaurante(@PathVariable Long restauranteId) {
+        return platoService.obtenerPorRestauranteId(restauranteId);
+    }
+
+    @GetMapping("/{id}")
+    public PlatoDTO obtenerPlato(@PathVariable Long id) {
+        return platoService.obtenerPorId(id);
+    }
+
+    @PostMapping
+    public PlatoDTO crearPlato(@RequestBody PlatoDTO dto) {
+        return platoService.crearPlato(dto);
+    }
+
+    @PutMapping("/{id}")
+    public PlatoDTO actualizarPlato(@PathVariable Long id, @RequestBody PlatoDTO dto) {
+        return platoService.actualizarPlato(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarPlato(@PathVariable Long id) {
+        platoService.eliminarPlato(id);
+    }
+    
+    @PostMapping("/{platoId}/ingredientes")
+    public ResponseEntity<?> asignarIngredientes(
+            @PathVariable Long platoId,
+            @RequestBody Map<Long, Double> ingredientesConCantidad) {
+        platoService.asignarIngredientesAPlato(platoId, ingredientesConCantidad);
+        return ResponseEntity.ok().build();
+    }
+
+}

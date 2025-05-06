@@ -1,0 +1,4 @@
+
+€	java:S112S"FDefine and throw a dedicated exception instead of using a generic one.8 Åœžæ2b 15452a9b0f2356c3dabe720a67728b3dh
+ˆ	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8 Åœžæ2b 0e67a878654487cfb2c364ca11469674h
+v	java:S125Y"<This block of commented-out lines of code should be removed.8 Åœžæ2b 4792b11582119901f1034d1b8d03b5a6h

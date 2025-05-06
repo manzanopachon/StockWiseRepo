@@ -1,0 +1,89 @@
+package com.dam.restaurante.service;
+
+import com.dam.restaurante.dto.PlatoDTO;
+import com.dam.restaurante.model.Plato;
+import com.dam.restaurante.repository.PlatoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+public class PlatoService {
+
+    @Autowired
+    private PlatoRepository platoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private RestauranteRepository restauranteRepository;
+
+    public List<PlatoDTO> obtenerTodos() {
+        return platoRepository.findAll().stream().map(this::convertirAPlatoDTO).collect(Collectors.toList());
+    }
+
+    public PlatoDTO obtenerPorId(Long id) {
+        return platoRepository.findById(id)
+                .map(this::convertirAPlatoDTO)
+                .orElseThrow(() -> new RuntimeException("Plato no encontrado"));
+    }
+
+    public PlatoDTO crearPlato(PlatoDTO dto) {
+        Plato nuevo = new Plato();
+        nuevo.setNombre(dto.getNombre());
+        nuevo.setDescripcion(dto.getDescripcion());
+        nuevo.setPrecio(dto.getPrecio());
+
+        // Buscar categoría por nombre
+        Categoria categoria = categoriaRepository.findByNombre(dto.getCategoria())
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada: " + dto.getCategoria()));
+        nuevo.setCategoria(categoria);
+
+        // Buscar restaurante por ID
+        Restaurante restaurante = restauranteRepository.findById(dto.getRestauranteId())
+                .orElseThrow(() -> new RuntimeException("Restaurante no encontrado"));
+        nuevo.setRestaurante(restaurante);
+
+        // Guardar el plato
+        return convertirAPlatoDTO(platoRepository.save(nuevo));
+    }
+
+    public PlatoDTO actualizarPlato(Long id, PlatoDTO dto) {
+        Plato existente = platoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Plato no encontrado"));
+
+        existente.setNombre(dto.getNombre());
+        existente.setDescripcion(dto.getDescripcion());
+        existente.setPrecio(dto.getPrecio());
+
+        Categoria categoria = categoriaRepository.findByNombre(dto.getCategoria())
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+        existente.setCategoria(categoria);
+
+        Restaurante restaurante = restauranteRepository.findById(dto.getRestauranteId())
+                .orElseThrow(() -> new RuntimeException("Restaurante no encontrado"));
+        existente.setRestaurante(restaurante);
+
+        return convertirAPlatoDTO(platoRepository.save(existente));
+    }
+
+    public void eliminarPlato(Long id) {
+        platoRepository.deleteById(id);
+    }
+
+    private PlatoDTO convertirAPlatoDTO(Plato p) {
+        return new PlatoDTO(
+                p.getId(),
+                p.getNombre(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getCategoria() != null ? p.getCategoria().getNombre() : null,
+                p.getRestaurante() != null ? p.getRestaurante().getId() : null,
+                null // lista de ingredientes se puede implementar luego
+        );
+    }
+}

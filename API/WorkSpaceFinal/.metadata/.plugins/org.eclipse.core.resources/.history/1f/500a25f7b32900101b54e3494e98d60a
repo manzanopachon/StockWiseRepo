@@ -1,0 +1,56 @@
+package com.dam.restaurante.controller;
+
+import com.dam.restaurante.dto.PlatoDTO;
+import com.dam.restaurante.service.PlatoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/platos")
+@CrossOrigin(origins = "*")
+public class PlatoController {
+
+    @Autowired
+    private PlatoService platoService;
+
+    @GetMapping
+    public List<PlatoDTO> listarPlatos() {
+        return platoService.obtenerTodos();
+    }
+
+    @GetMapping("/restaurante/{restauranteId}")
+    public List<PlatoDTO> listarPorRestaurante(@PathVariable Long restauranteId) {
+        return platoService.obtenerPorRestauranteId(restauranteId);
+    }
+
+    @GetMapping("/{id}")
+    public PlatoDTO obtenerPlato(@PathVariable Long id) {
+        return platoService.obtenerPorId(id);
+    }
+
+    @PostMapping
+    public PlatoDTO crearPlato(@RequestBody PlatoDTO dto) {
+        return platoService.crearPlato(dto);
+    }
+
+    @PutMapping("/{id}")
+    public PlatoDTO actualizarPlato(@PathVariable Long id, @RequestBody PlatoDTO dto) {
+        return platoService.actualizarPlato(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarPlato(@PathVariable Long id) {
+        platoService.eliminarPlato(id);
+    }
+    
+    @PostMapping("/{platoId}/ingredientes")
+    public ResponseEntity<?> asignarIngredientes(
+            @PathVariable Long platoId,
+            @RequestBody Map<Long, Double> ingredientesConCantidad) {
+        platoService.asignarIngredientesAPlato(platoId, ingredientesConCantidad);
+        return ResponseEntity.ok().build();
+    }
+
+}

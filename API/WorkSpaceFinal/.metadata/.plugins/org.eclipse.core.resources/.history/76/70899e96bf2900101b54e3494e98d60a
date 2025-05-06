@@ -1,0 +1,21 @@
+package com.dam.restaurante.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.dam.restaurante.model.Plato;
+import com.dam.restaurante.model.PlatoIngrediente;
+
+public interface PlatoRepository extends JpaRepository<Plato, Long> {
+    // Buscar platos por categoría
+    List<Plato> findByCategoriaId(Long categoriaId);
+    
+    
+    void deleteByPlato_IdAndIngredienteId(Long platoId, Long ingredienteId); // Cambiado a 'Plato_Id'
+
+    List<PlatoIngrediente> findByPlato_Id(Long platoId); // Cambiado a 'Plato_Id'
+
+    void deleteByPlato_Id(Long platoId); // Cambiado a 'Plato_Id'
+}

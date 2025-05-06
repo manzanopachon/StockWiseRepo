@@ -1,0 +1,17 @@
+package com.dam.restaurante.dto;
+
+public class RestauranteDTO {
+    private Long id;
+    private String nombre;
+    private String direccion;
+    private String telefono;
+
+    public RestauranteDTO(Restaurante restaurante) {
+        this.id = restaurante.getId();
+        this.nombre = restaurante.getNombre();
+        this.direccion = restaurante.getDireccion();
+        this.telefono = restaurante.getTelefono();
+    }
+
+    // Getters y setters...
+}
