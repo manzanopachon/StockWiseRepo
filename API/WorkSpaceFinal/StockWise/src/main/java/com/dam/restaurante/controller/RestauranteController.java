@@ -50,6 +50,6 @@ public class RestauranteController {
     @GetMapping("/{id}")
     public Restaurante obtenerPorId(@PathVariable Long id) {
         return restauranteService.obtenerPorId(id)
-                .orElseThrow(() -> new RuntimeException("Restaurante no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Restaurante no encontradooo"));
     }
 }
