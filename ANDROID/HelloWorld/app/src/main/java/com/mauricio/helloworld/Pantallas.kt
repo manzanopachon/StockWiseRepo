@@ -31,10 +31,23 @@ import java.nio.charset.StandardCharsets
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.webkit.WebView
+import android.webkit.WebViewClient
 
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ExperimentalGetImage
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.common.InputImage
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -63,54 +76,125 @@ fun HomeScreen(onEmpleadoClick: () -> Unit, onClienteClick: () -> Unit) {
     }
 }
 
+@androidx.annotation.OptIn(ExperimentalGetImage::class)
+@Composable
+fun QrScanner(
+    onQrCodeScanned: (String) -> Unit
+) {
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val previewView = remember { PreviewView(context) }
+    var alreadyScanned by remember { mutableStateOf(false) }
+
+    AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize())
+
+    LaunchedEffect(Unit) {
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
+        val cameraProvider = cameraProviderFuture.get()
+
+        val preview = Preview.Builder().build().also {
+            it.setSurfaceProvider(previewView.surfaceProvider)
+        }
+
+        val barcodeScanner = BarcodeScanning.getClient()
+
+        val imageAnalysis = ImageAnalysis.Builder()
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .build()
+
+        imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(context)) { imageProxy ->
+            val mediaImage = imageProxy.image
+            if (mediaImage != null && !alreadyScanned) {
+                val inputImage = InputImage.fromMediaImage(
+                    mediaImage, imageProxy.imageInfo.rotationDegrees
+                )
+
+                barcodeScanner.process(inputImage)
+                    .addOnSuccessListener { barcodes ->
+                        for (barcode in barcodes) {
+                            val rawValue = barcode.rawValue
+                            if (!rawValue.isNullOrBlank()) {
+                                alreadyScanned = true
+                                onQrCodeScanned(rawValue)
+                            }
+                        }
+                    }
+                    .addOnFailureListener {
+                        it.printStackTrace()
+                    }
+                    .addOnCompleteListener {
+                        imageProxy.close()
+                    }
+            } else {
+                imageProxy.close()
+            }
+        }
+
+        val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+
+        try {
+            cameraProvider.unbindAll()
+            cameraProvider.bindToLifecycle(
+                lifecycleOwner, cameraSelector, preview, imageAnalysis
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+}
+
 @Composable
 fun ClienteScreen(
-    onContinuarClick: (Int, Int) -> Unit // restauranteId, numeroMesa
+    onContinuarClick: (Int, Int) -> Unit
 ) {
     var qrContent by remember { mutableStateOf<String?>(null) }
     var numeroMesa by remember { mutableStateOf("") }
     var restauranteId by remember { mutableStateOf<Int?>(null) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("Escanea el código QR del restaurante")
 
-        // Aquí usarías la vista del escáner como antes
         if (qrContent == null) {
             QrScanner { content ->
                 qrContent = content
-                val uri = Uri.parse("?$content")
+                val uri = Uri.parse(content)
                 restauranteId = uri.getQueryParameter("restauranteId")?.toIntOrNull()
+                numeroMesa = uri.getQueryParameter("id_mesa") ?: ""
             }
         } else {
-            Text(
-                text = "Código QR leído: restauranteId = $restauranteId",
-                modifier = Modifier.padding(16.dp)
-            )
-
-            OutlinedTextField(
-                value = numeroMesa,
-                onValueChange = { numeroMesa = it },
-                label = { Text("Número de mesa") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            )
+            Text("Código QR leído:")
+            Text("Restaurante ID: $restauranteId")
+            Text("Mesa: $numeroMesa")
 
             Button(
                 onClick = {
-                    restauranteId?.let { id ->
-                        onContinuarClick(id, numeroMesa.toIntOrNull() ?: 0)
+                    val idMesa = numeroMesa.toIntOrNull() ?: 0
+                    restauranteId?.let { idRestaurante ->
+                        onContinuarClick(idRestaurante, idMesa)
                     }
                 },
-                enabled = numeroMesa.isNotBlank() && restauranteId != null,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .fillMaxWidth()
+                enabled = restauranteId != null && numeroMesa.isNotBlank(),
+                modifier = Modifier.padding(top = 16.dp)
             ) {
                 Text("Ver Carta")
             }
         }
     }
+}
+
+
+@Composable
+fun WebViewScreen(url: String) {
+    AndroidView(
+        factory = { context ->
+            WebView(context).apply {
+                webViewClient = WebViewClient()
+                settings.javaScriptEnabled = true
+                loadUrl(url)
+            }
+        },
+        modifier = Modifier.fillMaxSize()
+    )
 }
 
 

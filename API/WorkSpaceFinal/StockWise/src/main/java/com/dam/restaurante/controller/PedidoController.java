@@ -44,66 +44,57 @@ public class PedidoController {
 	 private PedidoRepository pedidoRepository;
 
 	 
-	@PostMapping("/crear")
-	@Transactional
-	public ResponseEntity<?> crearPedido(@RequestBody PedidoDTO dto) {
-	    // 1. Verificar que el restaurante existe
-	    Optional<Restaurante> restauranteOpt = restauranteRepository.findById(dto.getRestauranteId());
-	    if (restauranteOpt.isEmpty()) {
-	        return ResponseEntity.badRequest().body("Restaurante no encontrado");
-	    }
-
-	    Restaurante restaurante = restauranteOpt.get();
-
-	    // 2. Verificar que los platos existen
-	    List<Plato> platos = platoRepository.findAllById(dto.getPlatos());
-	    if (platos.size() != dto.getPlatos().size()) {
-	        return ResponseEntity.badRequest().body("Uno o más platos no existen");
-	    }
-
-	    // 3. Crear el pedido
-	    Pedido pedido = new Pedido();
-	    pedido.setNumeroMesa(dto.getNumeroMesa());
-	    pedido.setRestaurante(restaurante);
-	    pedido.setFechaHora(dto.getFechaHora() != null ? dto.getFechaHora() : LocalDateTime.now());  // Si no se pasa la fecha, se asigna la actual
-
-	    // 4. Asociar los platos al pedido
-	    // Asumiendo que tienes una relación entre Pedido y Plato:
-	    List<Plato> platosSeleccionados = platoRepository.findAllById(dto.getPlatos());
-	    pedido.setPlatos(platosSeleccionados);  // Aquí la relación se debe guardar en la base de datos
-
-	    // 5. Sumar los ingredientes necesarios para este pedido
-	    Map<Ingrediente, Double> ingredientesARestar = new HashMap<>();
-
-	    for (Plato plato : platosSeleccionados) {
-	        for (PlatoIngrediente pi : plato.getIngredientes()) {
-	            Ingrediente ingrediente = pi.getIngrediente();
-	            double cantidadNecesaria = pi.getCantidadNecesaria();
-
-	            // Sumar las cantidades de ingredientes necesarias
-	            ingredientesARestar.merge(ingrediente, cantidadNecesaria, Double::sum);
-	        }
-	    }
-
-	    // 6. Restar los ingredientes del stock
-	    for (Map.Entry<Ingrediente, Double> entry : ingredientesARestar.entrySet()) {
-	        Ingrediente ingrediente = entry.getKey();
-	        double cantidadRestar = entry.getValue();
-
-	        if (ingrediente.getCantidadStock() < cantidadRestar) {
-	            return ResponseEntity.badRequest().body("No hay suficiente stock para " + ingrediente.getNombre());
-	        }
-
-	        // Restar del stock
-	        ingrediente.setCantidadStock(ingrediente.getCantidadStock() - cantidadRestar);
-	        ingredienteRepository.save(ingrediente); // Guardar el cambio en el stock
-	    }
-
-	    // 7. Guardar el pedido en la base de datos
-	    pedidoRepository.save(pedido);
-
-	    // 8. Responder con éxito
-	    return ResponseEntity.ok("Pedido realizado correctamente");
-	}
+	 @PostMapping("/crear")
+	 @Transactional
+	 public ResponseEntity<?> crearPedido(@RequestBody PedidoDTO dto) {
+		 // 1. Verificar restaurante
+		 Optional<Restaurante> restauranteOpt = restauranteRepository.findById(dto.getRestauranteId());
+		 if (restauranteOpt.isEmpty()) {
+			 return ResponseEntity.badRequest().body("Restaurante no encontrado");
+		 }
+		 Restaurante restaurante = restauranteOpt.get();
+	 
+		 // 2. Verificar platos
+		 List<Plato> platos = platoRepository.findAllById(dto.getPlatos());
+		 if (platos.size() != dto.getPlatos().size()) {
+			 return ResponseEntity.badRequest().body("Uno o más platos no existen");
+		 }
+	 
+		 // 3. Crear el pedido desde el DTO
+		 Pedido pedido = Pedido.fromDTO(dto, restaurante, platos);
+	 
+		 // 4. Calcular ingredientes a restar
+		 Map<Ingrediente, Double> ingredientesARestar = new HashMap<>();
+		 for (Plato plato : platos) {
+			 for (PlatoIngrediente pi : plato.getIngredientes()) {
+				 ingredientesARestar.merge(
+					 pi.getIngrediente(),
+					 pi.getCantidadNecesaria(),
+					 Double::sum
+				 );
+			 }
+		 }
+	 
+		 // 5. Validar y actualizar stock
+		 for (Map.Entry<Ingrediente, Double> entry : ingredientesARestar.entrySet()) {
+			 Ingrediente ingrediente = entry.getKey();
+			 double cantidadRestar = entry.getValue();
+	 
+			 if (ingrediente.getCantidadStock() < cantidadRestar) {
+				 return ResponseEntity.badRequest()
+					 .body("No hay suficiente stock para " + ingrediente.getNombre());
+			 }
+	 
+			 ingrediente.setCantidadStock(ingrediente.getCantidadStock() - cantidadRestar);
+			 ingredienteRepository.save(ingrediente);
+		 }
+	 
+		 // 6. Guardar el pedido
+		 pedidoRepository.save(pedido);
+	 
+		 // 7. Responder
+		 return ResponseEntity.ok("Pedido realizado correctamente");
+	 }
+	 
 
 }

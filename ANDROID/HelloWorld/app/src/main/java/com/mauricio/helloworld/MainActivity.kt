@@ -1,6 +1,7 @@
 package com.mauricio.helloworld
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -35,10 +36,27 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navController, startDestination = "home") {
                         composable("home") {
                             HomeScreen(
-                                onClienteClick = { /* ir a pantalla de cliente */ },
+                                onClienteClick = { navController.navigate("cliente") },
                                 onEmpleadoClick = { navController.navigate("empleadoOptions") }
                             )
                         }
+
+                        composable("cliente") {
+                            ClienteScreen { restauranteId, mesaId ->
+                                // Aquí rediriges a una pantalla web o WebView que construyas
+                                val url = "https://tuservidor.com/menu?restauranteId=$restauranteId&id_mesa=$mesaId"
+                                navController.navigate("verCarta/${Uri.encode(url)}")
+                            }
+                        }
+
+                        composable("verCarta/{url}",
+                            arguments = listOf(navArgument("url") { type = NavType.StringType })
+                        ) { backStackEntry ->
+                            val encodedUrl = backStackEntry.arguments?.getString("url") ?: ""
+                            val url = Uri.decode(encodedUrl)
+                            WebViewScreen(url)
+                        }
+
                         composable("empleadoOptions") {
                             EmpleadoOptionsScreen(
                                 onLoginClick = { navController.navigate("login") },
