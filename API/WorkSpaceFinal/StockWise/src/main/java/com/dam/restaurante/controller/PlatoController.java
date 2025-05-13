@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dam.restaurante.dto.PlatoDTO;
 import com.dam.restaurante.dto.PlatoIngredienteDTO;
+import com.dam.restaurante.model.Plato;
 import com.dam.restaurante.service.PlatoService;
 
 @RestController
@@ -44,9 +46,11 @@ public class PlatoController {
     }
 
     @PostMapping
-    public PlatoDTO crearPlato(@RequestBody PlatoDTO dto) {
-        return platoService.crearPlato(dto);
+    public ResponseEntity<PlatoDTO> crearPlato(@RequestBody PlatoDTO platoDTO) {
+        Plato plato = platoService.crearPlato(platoDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(platoDTO);
     }
+
 
     @PutMapping("/{id}")
     public PlatoDTO actualizarPlato(@PathVariable Long id, @RequestBody PlatoDTO dto) {

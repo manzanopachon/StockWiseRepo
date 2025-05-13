@@ -2,6 +2,7 @@ package com.mauricio.helloworld
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,8 +15,12 @@ import androidx.navigation.compose.rememberNavController
 import com.mauricio.helloworld.ui.theme.HelloWorldTheme
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 
 
 class MainActivity : ComponentActivity() {
@@ -49,20 +54,15 @@ class MainActivity : ComponentActivity() {
                             LoginScreen(navController = navController)
                         }
 
-                        composable("verificarCodigo/{empleadoId}") { backStackEntry ->
-                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
-                            VerificacionCodigoScreen(navController, empleadoId)
+                        composable("verificarCodigo/{empleadoId}/{nombreEmpleado}") {
+                            val empleadoId = it.arguments?.getString("empleadoId")?.toLong() ?: 0L
+                            val nombreEmpleadoRaw = it.arguments?.getString("nombreEmpleado") ?: "Desconocido"
+                            val nombreEmpleado = URLDecoder.decode(nombreEmpleadoRaw,   StandardCharsets.UTF_8.toString())
+
+                            VerificacionCodigoScreen(navController, empleadoId, nombreEmpleado)
                         }
 
 
-                        composable("verificar") {
-                            val empleadoId = it.savedStateHandle?.get<Long>("empleadoId") ?: -1
-                            VerificarCodigoDialog(
-                                empleadoId = empleadoId,
-                                onCodigoCorrecto = { navController.navigate("main") },
-                                onCancel = { navController.popBackStack() }
-                            )
-                        }
 
                         composable("bienvenida/{nombreEmpleado}/{empleadoId}") { backStackEntry ->
                             val nombreEmpleado = backStackEntry.arguments?.getString("nombreEmpleado") ?: "Desconocido"
@@ -74,12 +74,35 @@ class MainActivity : ComponentActivity() {
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             DatosEmpleadoScreen(navController, empleadoId)
                         }
+
                         composable("ingredientes/{empleadoId}/{restauranteId}") { backStackEntry ->
-                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLongOrNull() ?: -1
-                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull() ?: -1
+                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
                             EmpleadoScreen(navController, empleadoId, restauranteId)
                         }
 
+                        composable("nuevoIngrediente/{restauranteId}") { backStackEntry ->
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
+                            IngredienteScreen(navController, restauranteId)
+                        }
+                        composable("platoScreen/{empleadoId}/{restauranteId}") { backStackEntry ->
+                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLongOrNull() ?: 0L
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull() ?: 0L
+
+                            if (empleadoId == 0L || restauranteId == 0L) {
+                                // Maneja el caso de IDs inválidos (por ejemplo, mostrar un mensaje de error)
+                                Log.e("PlatoScreen", "Empleado o restaurante no válidos: empleadoId=$empleadoId, restauranteId=$restauranteId")
+                            } else {
+                                PlatoScreen(navController, empleadoId, restauranteId)
+                            }
+                        }
+
+                        composable("nuevoPlato/{restauranteId}") { backStackEntry ->
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull()
+                            restauranteId?.let {
+                                NuevoPlatoScreen(navController, it)
+                            }
+                        }
 
                     }
                 }

@@ -1,0 +1,109 @@
+package com.dam.restaurante.controller;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dam.restaurante.dto.PedidoDTO;
+import com.dam.restaurante.model.Ingrediente;
+import com.dam.restaurante.model.Pedido;
+import com.dam.restaurante.model.Plato;
+import com.dam.restaurante.model.PlatoIngrediente;
+import com.dam.restaurante.model.Restaurante;
+import com.dam.restaurante.repository.IngredienteRepository;
+import com.dam.restaurante.repository.PedidoRepository;
+import com.dam.restaurante.repository.PlatoRepository;
+import com.dam.restaurante.repository.RestauranteRepository;
+
+import jakarta.transaction.Transactional;
+
+
+@RestController
+@RequestMapping("/api/pedidos")
+public class PedidoController {
+	
+	 @Autowired
+	 private RestauranteRepository restauranteRepository;
+
+	 @Autowired
+	 private PlatoRepository platoRepository;
+
+	 @Autowired
+	 private IngredienteRepository ingredienteRepository;
+
+	 @Autowired
+	 private PedidoRepository pedidoRepository;
+
+	 
+	@PostMapping("/crear")
+	@Transactional
+	public ResponseEntity<?> crearPedido(@RequestBody PedidoDTO dto) {
+	    // 1. Verificar que el restaurante existe
+	    Optional<Restaurante> restauranteOpt = restauranteRepository.findById(dto.getRestauranteId());
+	    if (restauranteOpt.isEmpty()) {
+	        return ResponseEntity.badRequest().body("Restaurante no encontrado");
+	    }
+
+	    Restaurante restaurante = restauranteOpt.get();
+
+	    // 2. Verificar que los platos existen
+	    List<Plato> platos = platoRepository.findAllById(dto.getPlatos());
+	    if (platos.size() != dto.getPlatos().size()) {
+	        return ResponseEntity.badRequest().body("Uno o más platos no existen");
+	    }
+
+	    // 3. Crear el pedido
+	    Pedido pedido = new Pedido();
+	    pedido.setNumeroMesa(dto.getNumeroMesa());
+	    pedido.setRestaurante(restaurante);
+	    pedido.setFechaHora(dto.getFechaHora() != null ? dto.getFechaHora() : LocalDateTime.now());  // Si no se pasa la fecha, se asigna la actual
+
+	    // 4. Asociar los platos al pedido
+	    // Asumiendo que tienes una relación entre Pedido y Plato:
+	    List<Plato> platosSeleccionados = platoRepository.findAllById(dto.getPlatos());
+	    pedido.setPlatos(platosSeleccionados);  // Aquí la relación se debe guardar en la base de datos
+
+	    // 5. Sumar los ingredientes necesarios para este pedido
+	    Map<Ingrediente, Double> ingredientesARestar = new HashMap<>();
+
+	    for (Plato plato : platosSeleccionados) {
+	        for (PlatoIngrediente pi : plato.getIngredientes()) {
+	            Ingrediente ingrediente = pi.getIngrediente();
+	            double cantidadNecesaria = pi.getCantidadNecesaria();
+
+	            // Sumar las cantidades de ingredientes necesarias
+	            ingredientesARestar.merge(ingrediente, cantidadNecesaria, Double::sum);
+	        }
+	    }
+
+	    // 6. Restar los ingredientes del stock
+	    for (Map.Entry<Ingrediente, Double> entry : ingredientesARestar.entrySet()) {
+	        Ingrediente ingrediente = entry.getKey();
+	        double cantidadRestar = entry.getValue();
+
+	        if (ingrediente.getCantidadStock() < cantidadRestar) {
+	            return ResponseEntity.badRequest().body("No hay suficiente stock para " + ingrediente.getNombre());
+	        }
+
+	        // Restar del stock
+	        ingrediente.setCantidadStock(ingrediente.getCantidadStock() - cantidadRestar);
+	        ingredienteRepository.save(ingrediente); // Guardar el cambio en el stock
+	    }
+
+	    // 7. Guardar el pedido en la base de datos
+	    pedidoRepository.save(pedido);
+
+	    // 8. Responder con éxito
+	    return ResponseEntity.ok("Pedido realizado correctamente");
+	}
+
+}

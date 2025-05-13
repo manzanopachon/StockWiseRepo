@@ -1,7 +1,11 @@
 
 Z
-java:S1452@"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh
+java:S1452V"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh
+t
+java:S18542"9Remove this useless assignment to local variable "plato".8øéıê2b b69f04bca067e3368b3ad3b584703fa3h
 Z
-java:S1452H"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh
+java:S1452D"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh
+e
+java:S14812"*Remove this unused "plato" local variable.8øéıê2b 8e4c8500fb823b206d2e96b9e5fc96cah
 Z
-java:S1452R"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh
+java:S1452L"&Remove usage of generic wildcard type.b d1457b72c3fb323a2671125aef3eab5dh

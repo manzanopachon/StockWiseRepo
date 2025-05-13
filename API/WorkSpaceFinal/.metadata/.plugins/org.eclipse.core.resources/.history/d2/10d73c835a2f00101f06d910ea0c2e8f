@@ -1,0 +1,7 @@
+package com.dam.restaurante.dto;
+
+public class PedidoDTO {
+    private Integer numeroMesa;
+    private Long restauranteId;
+    private List<Long> platos;
+}

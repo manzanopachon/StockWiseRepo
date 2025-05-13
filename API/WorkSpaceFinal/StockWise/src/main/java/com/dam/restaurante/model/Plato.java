@@ -1,7 +1,17 @@
 package com.dam.restaurante.model;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Plato {
@@ -17,6 +27,7 @@ public class Plato {
     private Double precio;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
@@ -25,7 +36,7 @@ public class Plato {
     private Restaurante restaurante;
 
     @OneToMany(mappedBy = "plato", cascade = CascadeType.ALL)
-    private List<PlatoIngrediente> platoIngredientes;
+    private List<PlatoIngrediente> ingredientes;
 
     // Getters y setters
 	public Long getId() {
@@ -76,13 +87,15 @@ public class Plato {
 		this.restaurante = restaurante;
 	}
 
-	public List<PlatoIngrediente> getPlatoIngredientes() {
-		return platoIngredientes;
+	public List<PlatoIngrediente> getIngredientes() {
+		return ingredientes;
 	}
 
-	public void setPlatoIngredientes(List<PlatoIngrediente> platoIngredientes) {
-		this.platoIngredientes = platoIngredientes;
+	public void setIngredientes(List<PlatoIngrediente> ingredientes) {
+		this.ingredientes = ingredientes;
 	}
+
+	
 
    
 }

@@ -1,0 +1,5 @@
+
+†
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'b f31c9542f92d797a57d6f9bafca179cdh
+†
+java:S6204$"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'b f31c9542f92d797a57d6f9bafca179cdh

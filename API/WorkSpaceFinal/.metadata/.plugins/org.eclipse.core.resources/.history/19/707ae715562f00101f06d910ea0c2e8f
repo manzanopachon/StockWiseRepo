@@ -1,0 +1,13 @@
+package com.dam.restaurante.service;
+
+@Service
+public class MesaService {
+
+    @Autowired
+    private MesaRepository mesaRepository;
+
+    public Optional<Long> getRestauranteIdByNumeroMesa(Integer numeroMesa) {
+        return mesaRepository.findByNumero(numeroMesa)
+                .map(mesa -> mesa.getRestaurante().getId());
+    }
+}

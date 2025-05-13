@@ -70,7 +70,7 @@ public class PedidoService {
 
         for (PedidoDetalle detalle : detalles) {
             Plato plato = detalle.getPlato();
-            List<PlatoIngrediente> platoIngredientes = plato.getPlatoIngredientes();
+            List<PlatoIngrediente> platoIngredientes = plato.getIngredientes();
 
             for (PlatoIngrediente platoIngrediente : platoIngredientes) {
                 Ingrediente ingrediente = platoIngrediente.getIngrediente();

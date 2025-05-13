@@ -3,6 +3,8 @@ package com.dam.restaurante.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dam.restaurante.dto.IngredienteCreateDTO;
 import com.dam.restaurante.dto.IngredienteDTO;
 import com.dam.restaurante.service.IngredienteService;
 
@@ -33,17 +36,24 @@ public class IngredienteController {
     public List<IngredienteDTO> listarPorRestaurante(@PathVariable Long restauranteId) {
         return ingredienteService.obtenerIngredientesPorRestaurante(restauranteId);
     }
+    
 
     @GetMapping("/{id}")
     public IngredienteDTO obtenerIngrediente(@PathVariable Long id) {
         return ingredienteService.obtenerPorId(id);
     }
-
+/*
     @PostMapping
     public IngredienteDTO crearIngrediente(@RequestBody IngredienteDTO dto) {
         return ingredienteService.crearIngrediente(dto);
     }
-
+    */
+    //Crear Ingrediente
+    @PostMapping("/crear")
+    public ResponseEntity<IngredienteDTO> crearIngrediente(@RequestBody IngredienteCreateDTO dto) {
+        IngredienteDTO creado = ingredienteService.crearIngrediente(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
+    }
     @PutMapping("/{id}")
     public IngredienteDTO actualizarIngrediente(@PathVariable Long id, @RequestBody IngredienteDTO dto) {
         return ingredienteService.actualizarIngrediente(id, dto);

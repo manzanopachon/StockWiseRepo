@@ -26,7 +26,7 @@ public class Empleado {
     
     private int intentosRestantes = 3;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 

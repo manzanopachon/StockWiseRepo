@@ -1,6 +1,7 @@
 package com.dam.restaurante.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dam.restaurante.model.Empleado;
-import com.dam.restaurante.model.Restaurante;
 import com.dam.restaurante.repository.EmpleadoRepository;
 
 import jakarta.transaction.Transactional;
@@ -55,18 +55,18 @@ public class EmpleadoService {
     }
 
     // Método para verificar el código de verificación
-    public Empleado verificarCodigo(Long id, String codigo) {
+    public Optional<Empleado> verificarCodigo(Long id, String codigo) {
         Empleado empleado = empleadoRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
 
         if (empleado.getValidado()) {
-            return empleado;
+            return Optional.of(empleado);
         }
 
         if (empleado.getCodigoValidacion().equals(codigo)) {
             empleado.setValidado(true);
             empleado.setIntentosRestantes(3); // reset
-            return empleadoRepository.save(empleado);
+            return Optional.of(empleadoRepository.save(empleado));
         } else {
             int intentos = empleado.getIntentosRestantes() - 1;
             empleado.setIntentosRestantes(intentos);
@@ -76,8 +76,13 @@ public class EmpleadoService {
                 empleado.setIntentosRestantes(3);
             }
 
-            return empleadoRepository.save(empleado);
+            empleadoRepository.save(empleado);
+            return Optional.empty();
         }
+    }
+    //Metodo para obtener un empleado por su ID
+    public Optional<Empleado> obtenerPorId(Long id) {
+        return empleadoRepository.findById(id);
     }
 
     // Método para iniciar sesión

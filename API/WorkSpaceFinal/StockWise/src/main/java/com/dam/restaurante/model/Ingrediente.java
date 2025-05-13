@@ -31,7 +31,7 @@ public class Ingrediente {
 	@JoinColumn(name = "restaurante_id")
 	private Restaurante restaurante;
 
-
+//Getters y Setters
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -98,6 +98,14 @@ public class Ingrediente {
 
 	public void setFotoUrl(String fotoUrl) {
 		this.fotoUrl = fotoUrl;
+	}
+
+	public Restaurante getRestaurante() {
+		return restaurante;
+	}
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
 	}
 
 	

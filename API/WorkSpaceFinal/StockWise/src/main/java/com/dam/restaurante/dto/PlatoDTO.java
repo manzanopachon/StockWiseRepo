@@ -7,51 +7,114 @@ public class PlatoDTO {
     private String nombre;
     private String descripcion;
     private Double precio;
-    private String categoria;
+    private CategoriaDTO categoria;
     private Long restauranteId;
+    
+    // Nuevo: lista de ingredientes con cantidad
+    private List<IngredienteCantidadDTO> ingredientes;
 
-    // Opcional: lista de IDs de ingredientes relacionados
-    private List<Long> ingredientesIds;
+    // Constructor, getters y setters
 
-    public PlatoDTO() {
+    public static class IngredienteCantidadDTO {
+        private Long ingredienteId;
+        private Double cantidad;
+		public Long getIngredienteId() {
+			return ingredienteId;
+		}
+		public void setIngredienteId(Long ingredienteId) {
+			this.ingredienteId = ingredienteId;
+		}
+		public Double getCantidad() {
+			return cantidad;
+		}
+		public void setCantidad(Double cantidad) {
+			this.cantidad = cantidad;
+		}
+		public IngredienteCantidadDTO(Long ingredienteId, Double cantidad) {
+			super();
+			this.ingredienteId = ingredienteId;
+			this.cantidad = cantidad;
+		}
+		public IngredienteCantidadDTO() {
+			super();
+		}
+
+        // Constructor vacío, getters y setters
+        
     }
+    
+    
 
-    public PlatoDTO(Long id, String nombre, String descripcion, Double precio, String categoria, Long restauranteId, List<Long> ingredientesIds) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.restauranteId = restauranteId;
-        this.ingredientesIds = ingredientesIds;
-    }
+	public PlatoDTO(Long id, String nombre, String descripcion, Double precio, CategoriaDTO categoria,
+			Long restauranteId, List<IngredienteCantidadDTO> ingredientes) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.restauranteId = restauranteId;
+		this.ingredientes = ingredientes;
+	}
 
-    // Getters y Setters
-    public Long getId() { return id; }
+	public PlatoDTO() {
+		super();
+	}
 
-    public void setId(Long id) { this.id = id; }
+	public Long getId() {
+		return id;
+	}
 
-    public String getNombre() { return nombre; }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getDescripcion() { return descripcion; }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public Double getPrecio() { return precio; }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    public void setPrecio(Double precio) { this.precio = precio; }
+	public Double getPrecio() {
+		return precio;
+	}
 
-    public String getCategoria() { return categoria; }
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+	public CategoriaDTO getCategoria() {
+		return categoria;
+	}
 
-    public Long getRestauranteId() { return restauranteId; }
+	public void setCategoria(CategoriaDTO categoria) {
+		this.categoria = categoria;
+	}
 
-    public void setRestauranteId(Long restauranteId) { this.restauranteId = restauranteId; }
+	public Long getRestauranteId() {
+		return restauranteId;
+	}
 
-    public List<Long> getIngredientesIds() { return ingredientesIds; }
+	public void setRestauranteId(Long restauranteId) {
+		this.restauranteId = restauranteId;
+	}
 
-    public void setIngredientesIds(List<Long> ingredientesIds) { this.ingredientesIds = ingredientesIds; }
+	public List<IngredienteCantidadDTO> getIngredientes() {
+		return ingredientes;
+	}
+
+	public void setIngredientes(List<IngredienteCantidadDTO> ingredientes) {
+		this.ingredientes = ingredientes;
+	}
 }
+

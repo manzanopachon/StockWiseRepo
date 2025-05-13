@@ -12,6 +12,7 @@ public class IngredienteDTO {
     private Double prioridadAlta;
     private String proveedor;
     private String fotoUrl;
+    
 
     public IngredienteDTO(Long id, String nombre, String unidadMedida, Double cantidadStock,
                           Double prioridadBaja, Double prioridadMedia, Double prioridadAlta,

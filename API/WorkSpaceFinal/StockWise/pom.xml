@@ -52,7 +52,11 @@
 
     <!-- JWT (JSON Web Token) -->
 
-
+<dependency>
+<groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt</artifactId>
+  <version>0.9.1</version>
+</dependency>
     <!-- Spring Boot Starter Mail (para enviar emails de verificación) -->
     <dependency>
         <groupId>org.springframework.boot</groupId>

@@ -2188,3 +2188,1099 @@ java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.ni
 2025-05-06 09:41:53,892 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-05-06 09:41:53,896 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
 2025-05-06 09:43:34,996 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-06-09-43-34.tar.gz" created.
+2025-05-07 11:19:08,249 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-05-07 11:19:10,104 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$df4b5289] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 11:19:10,208 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 11:19:15,529 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4.pom
+2025-05-07 11:19:15,564 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4.pom
+2025-05-07 11:19:16,528 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4.pom
+2025-05-07 11:19:16,534 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4.pom
+2025-05-07 11:19:16,569 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4.pom
+2025-05-07 11:19:16,574 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4.pom
+2025-05-07 11:19:16,801 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5.pom
+2025-05-07 11:19:16,806 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5.pom
+2025-05-07 11:19:16,839 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5.pom
+2025-05-07 11:19:16,846 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5.pom
+2025-05-07 11:19:17,024 [ForkJoinPool.commonPool-worker-1] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @2e87841b
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-07 11:19:17,037 [ForkJoinPool.commonPool-worker-1] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-07 11:19:17,583 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15576787117741842356
+2025-05-07 11:19:17,590 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-07 11:19:21,974 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4.jar
+2025-05-07 11:19:21,978 [Worker-2: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4.jar
+2025-05-07 11:19:21,999 [BasicRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4.jar
+2025-05-07 11:19:22,030 [BasicRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4.jar
+2025-05-07 11:19:22,037 [BasicRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5.jar
+2025-05-07 11:19:22,047 [BasicRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5.jar
+2025-05-07 11:19:22,058 [BasicRepositoryConnector-repo.maven.apache.org-0-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5.jar
+2025-05-07 11:19:22,131 [BasicRepositoryConnector-repo.maven.apache.org-0-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5.jar
+2025-05-07 11:19:22,139 [BasicRepositoryConnector-repo.maven.apache.org-0-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4.jar
+2025-05-07 11:19:22,140 [BasicRepositoryConnector-repo.maven.apache.org-0-0] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4.jar
+2025-05-07 11:19:27,008 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15576787117741842356
+2025-05-07 11:19:27,016 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15576787117741842356
+2025-05-07 11:19:27,149 [Worker-2: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.dam:StockWise:0.0.1-SNAPSHOT @ C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\pom.xml.
+2025-05-07 11:19:28,121 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:19:28,145 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:19:28,152 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 11:19:28,629 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4-sources.jar
+2025-05-07 11:19:28,635 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.4/spring-boot-starter-actuator-3.4.4-sources.jar
+2025-05-07 11:19:28,642 [Worker-7: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-starter-actuator:3.4.4
+2025-05-07 11:19:28,711 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4-sources.jar
+2025-05-07 11:19:28,773 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.4/spring-boot-actuator-autoconfigure-3.4.4-sources.jar
+2025-05-07 11:19:28,778 [Worker-7: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-actuator-autoconfigure:3.4.4
+2025-05-07 11:19:28,833 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4-sources.jar
+2025-05-07 11:19:28,882 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.4/spring-boot-actuator-3.4.4-sources.jar
+2025-05-07 11:19:28,887 [Worker-7: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-actuator:3.4.4
+2025-05-07 11:19:29,191 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5-sources.jar
+2025-05-07 11:19:29,210 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.5/micrometer-jakarta9-1.14.5-sources.jar
+2025-05-07 11:19:29,215 [Worker-7: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.micrometer:micrometer-jakarta9:1.14.5
+2025-05-07 11:19:29,274 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5-sources.jar
+2025-05-07 11:19:29,342 [Worker-7: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.5/micrometer-core-1.14.5-sources.jar
+2025-05-07 11:19:29,369 [Worker-7: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.micrometer:micrometer-core:1.14.5
+2025-05-07 11:31:55,400 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-05-07 11:31:56,664 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$21131ddf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 11:31:56,772 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 11:32:03,301 [ForkJoinPool.commonPool-worker-2] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @38e1c48d
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-07 11:32:03,309 [ForkJoinPool.commonPool-worker-2] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-07 11:32:03,796 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store2812775401546096948
+2025-05-07 11:32:03,817 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-07 11:32:13,308 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store2812775401546096948
+2025-05-07 11:32:13,321 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store2812775401546096948
+2025-05-07 11:32:26,046 [Worker-3: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:32:26,070 [Worker-3: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:32:26,076 [Worker-3: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 11:33:28,285 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:33:28,302 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-05-07 11:33:28,307 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 11:49:10,198 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 11:49:10,232 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-05-07 11:49:10,248 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:01:28,944 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:29,200 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:29,204 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:01:37,873 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:37,879 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:37,883 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:01:44,577 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:44,581 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:01:44,584 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:03:10,810 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:03:10,815 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:03:10,818 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:03:49,879 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:03:49,887 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:03:49,896 [Worker-24: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:05:14,587 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:14,593 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:14,597 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:05:18,435 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:18,441 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:18,443 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:05:25,724 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:25,728 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:25,731 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:05:47,080 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:47,083 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:47,086 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 12:05:52,667 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:52,670 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 12:05:52,672 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:41:34,519 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:41:34,584 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:41:34,589 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:42:30,478 [Worker-28: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:42:30,506 [Worker-28: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:42:30,511 [Worker-28: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:47:46,409 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:47:46,418 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:47:46,421 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:48:25,127 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:48:25,142 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:48:25,144 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:48:43,283 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:48:43,286 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:48:43,289 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:49:13,732 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:49:13,740 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:49:13,743 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:51:29,053 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:29,058 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:29,061 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:51:41,158 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:41,163 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:41,166 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:51:54,662 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:54,667 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:51:54,669 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:52:40,200 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:40,204 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:40,207 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:52:42,316 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:42,320 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:42,324 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:52:48,160 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:48,164 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:52:48,167 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:53:00,864 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:00,869 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:00,872 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:53:05,330 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:05,333 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:05,335 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:53:18,843 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:18,846 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:18,849 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 13:53:50,168 [Worker-34: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:50,178 [Worker-34: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 13:53:50,184 [Worker-34: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 14:25:18,776 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:25:18,805 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:25:18,807 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 14:25:39,688 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:25:39,701 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:25:39,705 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 14:26:13,864 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:26:13,869 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 14:26:13,873 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 16:15:39,403 [ForkJoinPool.commonPool-worker-61] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-07-16-15-39.tar.gz" created.
+2025-05-07 18:50:55,900 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-05-07 18:50:57,796 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$1c935233] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 18:50:57,967 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-07 18:51:05,531 [ForkJoinPool.commonPool-worker-2] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @45e01d1
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-07 18:51:05,541 [ForkJoinPool.commonPool-worker-2] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-07 18:51:06,459 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store4324319768223672167
+2025-05-07 18:51:06,480 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-07 18:51:15,509 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store4324319768223672167
+2025-05-07 18:51:15,522 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store4324319768223672167
+2025-05-07 18:56:33,948 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 18:56:33,962 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 18:56:33,967 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 18:57:12,278 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 18:57:12,283 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 18:57:12,286 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:00:15,103 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:00:15,111 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:00:15,115 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:06:54,362 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:06:54,368 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:06:54,371 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:07:25,933 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:07:25,938 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:07:25,943 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:07:50,631 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:07:50,635 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:07:50,638 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:08:01,538 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:01,541 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:01,544 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:08:28,388 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:28,396 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:28,400 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:08:30,918 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:30,923 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:08:30,926 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:09:41,314 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:09:41,320 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:09:41,324 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:10:35,849 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:10:35,855 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:10:35,859 [Worker-11: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:11:56,764 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:11:56,769 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:11:56,771 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:11:58,832 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:11:58,835 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:11:58,838 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:12:08,201 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:12:08,204 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:12:08,207 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 19:13:32,051 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:13:32,055 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 19:13:32,058 [Worker-1: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:05:43,390 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:05:43,438 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:05:43,443 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:07:19,398 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:07:19,420 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:07:19,422 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:08:12,473 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:12,487 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:12,490 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:08:24,083 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:24,137 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:24,142 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:08:30,926 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:30,930 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:08:30,932 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:09:16,138 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:09:16,142 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:09:16,146 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:11:02,449 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:02,453 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:02,456 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:11:12,413 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:12,416 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:12,420 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:11:21,979 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:21,983 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:21,986 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:11:31,503 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:31,507 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:31,510 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:11:33,629 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:33,643 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:11:33,646 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:50:42,959 [Worker-54: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:50:42,973 [Worker-54: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:50:42,978 [Worker-54: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 21:50:55,144 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:50:55,150 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 21:50:55,153 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:21:34,851 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:21:34,889 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:21:34,893 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:21:42,770 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:21:42,776 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:21:42,778 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:22:06,386 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:06,390 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:06,393 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:22:20,029 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:20,032 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:20,035 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:22:33,310 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:33,313 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:33,315 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:22:45,826 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:45,830 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:22:45,832 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:23:11,151 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:11,154 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:11,157 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:23:45,976 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:45,979 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:45,981 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:23:48,203 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:48,206 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:23:48,208 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:24:16,758 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:16,765 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:16,769 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:24:21,798 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:21,804 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:21,807 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:24:30,033 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:30,038 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:30,041 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:24:52,381 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:52,385 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-07 22:24:52,390 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-07 22:45:18,875 [ForkJoinPool.commonPool-worker-61] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-07-22-45-18.tar.gz" created.
+2025-05-08 11:26:36,726 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-05-08 11:26:38,126 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$e0b9e096] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-08 11:26:38,199 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-08 11:26:44,359 [ForkJoinPool.commonPool-worker-2] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @2225b9a8
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-08 11:26:44,365 [ForkJoinPool.commonPool-worker-2] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-08 11:26:45,084 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15293325587074016416
+2025-05-08 11:26:45,096 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-08 11:26:54,349 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15293325587074016416
+2025-05-08 11:26:54,370 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store15293325587074016416
+2025-05-08 11:35:03,313 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:35:03,333 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:35:03,340 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 11:37:08,189 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:37:08,196 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:37:08,199 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 11:38:41,058 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:38:41,064 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:38:41,068 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 11:50:47,943 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:50:47,949 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:50:47,953 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 11:56:16,591 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:56:16,595 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 11:56:16,598 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:00:05,112 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:05,119 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:05,122 [Worker-15: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:00:23,376 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:23,381 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:23,384 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:00:32,927 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:32,956 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:00:32,963 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:02:01,777 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:02:01,782 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:02:01,786 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:03:14,934 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:14,939 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:14,944 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:03:18,306 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:18,309 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:18,312 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:03:26,808 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:26,811 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:26,814 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:03:49,853 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:49,860 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:03:49,863 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:04:04,607 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:04,612 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:04,616 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:04:14,640 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:14,643 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:14,646 [Worker-31: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:04:32,727 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:32,731 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:32,735 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:04:44,187 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:44,190 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:04:44,193 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:06:20,377 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:06:20,385 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:06:20,388 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:06:25,276 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:06:25,282 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:06:25,285 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:10:17,338 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:10:17,342 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:10:17,344 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:10:23,320 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:10:23,323 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:10:23,325 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:12:26,108 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:12:26,113 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:12:26,115 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:14:50,803 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:14:50,810 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:14:50,814 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:15:12,611 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:15:12,616 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:15:12,619 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:15:18,031 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:15:18,036 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:15:18,039 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:31:35,199 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:31:35,205 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:31:35,208 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:31:48,592 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:31:48,597 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:31:48,600 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:32:12,550 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:32:12,555 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:32:12,557 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:34:57,143 [Worker-41: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.dam:StockWise:0.0.1-SNAPSHOT @ C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\pom.xml.
+2025-05-08 12:34:57,486 [Worker-41: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.pom
+2025-05-08 12:34:57,503 [Worker-41: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.pom
+2025-05-08 12:34:57,853 [Worker-41: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.jar
+2025-05-08 12:34:57,924 [Worker-41: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.jar
+2025-05-08 12:34:58,467 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-05-08 12:34:58,469 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-05-08 12:34:58,472 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:34:59,237 [Worker-40: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-sources.jar
+2025-05-08 12:34:59,268 [Worker-40: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-sources.jar
+2025-05-08 12:34:59,273 [Worker-40: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for io.jsonwebtoken:jjwt:0.9.1
+2025-05-08 12:35:03,620 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:35:03,634 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:35:03,638 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:36:41,219 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:36:41,224 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:36:41,227 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:38:07,255 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:38:07,260 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:38:07,264 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:38:38,464 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:38:38,470 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:38:38,474 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:39:07,534 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:07,540 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:07,542 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:39:37,223 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:37,226 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:37,228 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:39:44,281 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:44,284 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:39:44,287 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:41:00,387 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:00,393 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:00,395 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:41:09,325 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:09,329 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:09,332 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:41:11,543 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:11,546 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:41:11,549 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:42:06,282 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:06,287 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:06,291 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:42:24,105 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:24,109 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:24,112 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:42:51,339 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:51,343 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:42:51,347 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:45:11,804 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:11,817 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:11,819 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:45:18,701 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:18,715 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:18,717 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:45:30,391 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:30,399 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:30,402 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:45:46,061 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:46,064 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:45:46,067 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:46:13,095 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:46:13,099 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:46:13,103 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:12,073 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:12,077 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:12,079 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:24,180 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:24,184 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:24,187 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:30,383 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:30,386 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:30,388 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:33,545 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:33,555 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:33,557 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:53,019 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:53,024 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-05-08 12:47:53,026 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:47:59,399 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:59,404 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:47:59,406 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:48:44,439 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:48:44,444 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:48:44,447 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 12:48:46,519 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:48:46,522 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 12:48:46,524 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:20:24,501 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:24,509 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:24,513 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:20:36,853 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:36,859 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:36,862 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:20:42,843 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:42,850 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:42,854 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:20:48,104 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:48,109 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:20:48,112 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:21:17,530 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:21:17,532 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:21:17,535 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:24:01,946 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:24:01,954 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:24:01,958 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:27:24,365 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:24,376 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:24,378 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:27:26,571 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:26,576 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:26,579 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:27:39,899 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:39,904 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:27:39,907 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:28:42,797 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:28:42,800 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:28:42,802 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:35:20,828 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:35:20,835 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:35:20,838 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:36:51,269 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:36:51,274 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:36:51,276 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:36:56,220 [Worker-42: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:36:56,234 [Worker-42: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:36:56,238 [Worker-42: Launching StockWise - StockWiseApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:40:20,900 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:40:20,905 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:40:20,908 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:41:42,163 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:41:42,168 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:41:42,170 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:41:53,757 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:41:53,762 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:41:53,764 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:42:43,282 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:42:43,286 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:42:43,288 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:42:54,653 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:42:54,657 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:42:54,659 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:45:32,754 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:45:32,760 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:45:32,763 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:45:59,597 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:45:59,602 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:45:59,605 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:46:15,389 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:46:15,393 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:46:15,395 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:46:24,329 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:46:24,334 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:46:24,336 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:48:47,476 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:48:47,480 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:48:47,483 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:48:48,683 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:48:48,687 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:48:48,689 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:49:02,200 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:49:02,206 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:49:02,209 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:49:06,116 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:49:06,119 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:49:06,121 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 13:59:01,254 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:59:01,259 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 13:59:01,262 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 14:00:22,165 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 14:00:22,170 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-08 14:00:22,172 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-08 15:45:57,250 [ForkJoinPool.commonPool-worker-82] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-08-15-45-57.tar.gz" created.
+2025-05-09 11:40:25,873 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-05-09 11:40:27,209 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$d7ffc7c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-09 11:40:27,291 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-09 11:40:33,234 [ForkJoinPool.commonPool-worker-2] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @2ace67b1
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-09 11:40:33,242 [ForkJoinPool.commonPool-worker-2] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-09 11:40:33,657 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store8634872919481015789
+2025-05-09 11:40:33,669 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-09 11:40:43,224 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store8634872919481015789
+2025-05-09 11:40:43,239 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store8634872919481015789
+2025-05-09 12:34:45,539 [ForkJoinPool.commonPool-worker-12] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-09-12-34-45.tar.gz" created.
+2025-05-12 19:05:29,777 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-05-12 19:05:32,010 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$70e79d54] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-12 19:05:32,107 [ForkJoinPool.commonPool-worker-2] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-12 19:05:38,685 [ForkJoinPool.commonPool-worker-2] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @58db535b
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:64)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2025-05-12 19:05:38,699 [ForkJoinPool.commonPool-worker-2] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2025-05-12 19:05:39,539 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store1831552589199045293
+2025-05-12 19:05:39,558 [ForkJoinPool.commonPool-worker-2] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2025-05-12 19:05:48,675 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store1831552589199045293
+2025-05-12 19:05:48,714 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\jmaur\.sonarlint\xodus-local-only-issue-store1831552589199045293
+2025-05-12 19:24:15,139 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:15,158 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:15,163 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:24:41,085 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:41,090 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:41,092 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:24:52,947 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:52,960 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:52,971 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:24:58,460 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:58,465 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:24:58,469 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:03,359 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:03,363 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:03,367 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:14,777 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:14,785 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:14,790 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:19,118 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:19,123 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:19,127 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:23,984 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:23,988 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:23,993 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:35,577 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:35,582 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:35,585 [Worker-28: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:43,487 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:43,492 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:43,496 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:25:56,543 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:56,547 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:25:56,551 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:33:47,958 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:33:47,963 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:33:47,966 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:34:01,383 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:01,388 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:01,390 [Worker-36: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:34:16,421 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:16,427 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:16,430 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:34:38,155 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:38,160 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:38,163 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:34:53,454 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:53,459 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:34:53,462 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:35:06,526 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:06,530 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:06,532 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:35:29,062 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:29,067 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:29,070 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:35:39,507 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:39,513 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:35:39,516 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:36:04,509 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:36:04,512 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:36:04,515 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:37:02,473 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:02,477 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:02,480 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:37:20,293 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:20,297 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:20,301 [Worker-37: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:37:57,700 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:57,704 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:37:57,706 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:54:05,197 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:54:05,204 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:54:05,208 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:54:09,179 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:54:09,184 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:54:09,186 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 19:57:04,661 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:57:04,667 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 19:57:04,669 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:01:12,901 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:01:12,907 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:01:12,910 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:01:37,270 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:01:37,275 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:01:37,279 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:02:04,886 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:02:04,890 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:02:04,893 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:02:51,638 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:02:51,651 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:02:51,654 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:03:19,130 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:03:19,134 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:03:19,137 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:03:29,739 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:03:29,753 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:03:29,755 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:04:00,239 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:00,245 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:00,249 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:04:28,330 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:28,337 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:28,339 [Worker-2: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:04:43,271 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:43,276 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:43,280 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:04:45,409 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:45,419 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:04:45,422 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:05:33,053 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:05:33,060 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:05:33,063 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:05:50,900 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:05:50,904 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:05:50,907 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:07:16,443 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:07:16,460 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:07:16,463 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:07:37,006 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:07:37,009 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-05-12 20:07:37,012 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-12 20:44:39,154 [ForkJoinPool.commonPool-worker-27] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-12-20-44-39.tar.gz" created.

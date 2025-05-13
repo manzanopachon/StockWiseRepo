@@ -1,0 +1,20 @@
+spring.application.name=StockWise
+
+spring.datasource.url=jdbc:mariadb://localhost:3306/restaurante
+spring.datasource.username=restaurante_user
+spring.datasource.password=claveSegura123
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+spring.security.user.name=admin
+spring.security.user.password={noop}admin123
+
+server.address=0.0.0.0
+#spring.datasource.username=root
+#spring.datasource.password=changeme
+
+#Mejoras: 
+#1- La contraseña tenga requisitos: Mas de 8 caracteres, 2 numeros minimo, una letra en mayuscula
+# 2 - El correo debe tener @ y tener un .
+# 3 - Los titulos que esten un poco mas abajo y con un fondo mas bonito

@@ -1,0 +1,5 @@
+package com.dam.restaurante.model;
+
+public class Mesa {
+
+}

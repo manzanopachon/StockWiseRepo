@@ -1,6 +1,11 @@
 package com.mauricio.helloworld
 
-data class Restaurante(val id: Long)
+data class Restaurante(
+    val id: Long,
+    val nombre: String,
+    val direccion: String,
+    val telefono: String
+)
 
 data class Empleado(
     val id: Long?,

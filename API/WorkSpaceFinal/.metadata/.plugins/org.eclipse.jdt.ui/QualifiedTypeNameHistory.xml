@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
     <fullyQualifiedTypeName name="org.springframework.security.config.Customizer"/>
-    <fullyQualifiedTypeName name="java.util.Optional"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.dam.restaurante.dto.CodigoVerificacionRequest"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="com.dam.restaurante.config.JwtTokenProvider"/>
+    <fullyQualifiedTypeName name="com.dam.restaurante.dto.PlatoDTO.IngredienteCantidadDTO"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="com.dam.restaurante.repository.MesaRepository"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="com.dam.restaurante.repository.RestauranteRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.query.EqlParser.Datetime_expressionContext"/>
 </qualifiedTypeNameHistroy>

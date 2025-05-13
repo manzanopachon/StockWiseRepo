@@ -3,6 +3,8 @@ package com.dam.restaurante.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Categoria {
 
@@ -13,6 +15,7 @@ public class Categoria {
     private String nombre;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Plato> platos;
     
     // Getters y setters

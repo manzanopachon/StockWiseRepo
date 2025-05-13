@@ -1,7 +1,9 @@
 
-‰
-java:S1128"NRemove this unused import 'com.dam.restaurante.dto.CodigoVerificacionRequest'.8Îı½…é2b 147ef772efce1c83681c0a659b52134eh
 a
-java:S14525"&Remove usage of generic wildcard type.8€„çè2b d1457b72c3fb323a2671125aef3eab5dh
+java:S1452$"&Remove usage of generic wildcard type.8ô¬´Ôê2b d1457b72c3fb323a2671125aef3eab5dh
+a
+java:S14527"&Remove usage of generic wildcard type.8ÑÌÑê2b d1457b72c3fb323a2671125aef3eab5dh
+a
+java:S1452H"&Remove usage of generic wildcard type.8€„çè2b d1457b72c3fb323a2671125aef3eab5dh
 c
-java:S5411;"(Use a primitive boolean expression here.8†çè2b bd577a39c3189a633cb404714d03695bh
+java:S5411N"(Use a primitive boolean expression here.8†çè2b bd577a39c3189a633cb404714d03695bh

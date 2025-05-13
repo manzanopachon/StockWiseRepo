@@ -14,6 +14,8 @@ public class RestauranteDTO {
         this.direccion = restaurante.getDireccion();
         this.telefono = restaurante.getTelefono();
     }
+    
+    //Getters y Setters
 
 	public Long getId() {
 		return id;

@@ -1,0 +1,16 @@
+package com.dam.restaurante.controller;
+
+@RestController
+@RequestMapping("/api/mesas")
+public class MesaController {
+
+    @Autowired
+    private MesaService mesaService;
+
+    @GetMapping("/restaurante-id/{numeroMesa}")
+    public ResponseEntity<Long> getRestauranteIdByNumeroMesa(@PathVariable Integer numeroMesa) {
+        return mesaService.getRestauranteIdByNumeroMesa(numeroMesa)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+}

@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dam.restaurante.dto.CategoriaDTO;
 import com.dam.restaurante.dto.PlatoDTO;
+import com.dam.restaurante.dto.PlatoDTO.IngredienteCantidadDTO;
 import com.dam.restaurante.dto.PlatoIngredienteDTO;
 import com.dam.restaurante.model.Categoria;
 import com.dam.restaurante.model.Ingrediente;
@@ -65,25 +67,41 @@ public class PlatoService {
                 .orElseThrow(() -> new RuntimeException("Plato no encontrado"));
     }
 
-    public PlatoDTO crearPlato(PlatoDTO dto) {
-        Plato nuevo = new Plato();
-        nuevo.setNombre(dto.getNombre());
-        nuevo.setDescripcion(dto.getDescripcion());
-        nuevo.setPrecio(dto.getPrecio());
+    public Plato crearPlato(PlatoDTO platoDTO) {
+        Plato plato = new Plato();
+        plato.setNombre(platoDTO.getNombre());
+        plato.setDescripcion(platoDTO.getDescripcion());
+        plato.setPrecio(platoDTO.getPrecio());
+        Categoria categoria = categoriaRepository.findByNombre(platoDTO.getCategoria().getNombre())
+        	    .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 
-        // Buscar categoría por nombre
-        Categoria categoria = categoriaRepository.findByNombre(dto.getCategoria())
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada: " + dto.getCategoria()));
-        nuevo.setCategoria(categoria);
+        plato.setCategoria(categoria);
 
-        // Buscar restaurante por ID
-        Restaurante restaurante = restauranteRepository.findById(dto.getRestauranteId())
-                .orElseThrow(() -> new RuntimeException("Restaurante no encontrado"));
-        nuevo.setRestaurante(restaurante);
+        plato.setRestaurante(restauranteRepository.findById(platoDTO.getRestauranteId()).orElseThrow(() -> new RuntimeException("Restaurante no encontrado")));
 
-        // Guardar el plato
-        return convertirAPlatoDTO(platoRepository.save(nuevo));
+        // Guardamos el plato
+        Plato platoGuardado = platoRepository.save(plato);
+
+        // Si existen ingredientes, los asociamos al plato
+        if (platoDTO.getIngredientes() != null && !platoDTO.getIngredientes().isEmpty()) {
+            for (PlatoDTO.IngredienteCantidadDTO ingredienteDTO : platoDTO.getIngredientes()) {
+                Ingrediente ingrediente = ingredienteRepository.findById(ingredienteDTO.getIngredienteId())
+                    .orElseThrow(() -> new RuntimeException("Ingrediente no encontrado"));
+
+                PlatoIngrediente platoIngrediente = new PlatoIngrediente();
+                platoIngrediente.setIngrediente(ingrediente);
+                platoIngrediente.setPlato(platoGuardado);
+                platoIngrediente.setCantidadNecesaria(ingredienteDTO.getCantidad());
+
+
+                platoIngredienteRepository.save(platoIngrediente);
+            }
+        }
+        
+        return platoGuardado;
     }
+
+
 
     public PlatoDTO actualizarPlato(Long id, PlatoDTO dto) {
         Plato existente = platoRepository.findById(id)
@@ -93,8 +111,9 @@ public class PlatoService {
         existente.setDescripcion(dto.getDescripcion());
         existente.setPrecio(dto.getPrecio());
 
-        Categoria categoria = categoriaRepository.findByNombre(dto.getCategoria())
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+        String nombreCategoria = dto.getCategoria().getNombre(); // <-- CAMBIO
+        Categoria categoria = categoriaRepository.findByNombre(nombreCategoria)
+                .orElseThrow(() -> new RuntimeException("Categoría no encontrada: " + nombreCategoria));
         existente.setCategoria(categoria);
 
         Restaurante restaurante = restauranteRepository.findById(dto.getRestauranteId())
@@ -108,17 +127,32 @@ public class PlatoService {
         platoRepository.deleteById(id);
     }
 
-    private PlatoDTO convertirAPlatoDTO(Plato p) {
+    public PlatoDTO convertirAPlatoDTO(Plato plato) {
+        CategoriaDTO categoriaDTO = new CategoriaDTO(
+            plato.getCategoria().getId(),
+            plato.getCategoria().getNombre()
+        );
+
+        List<PlatoDTO.IngredienteCantidadDTO> ingredientesDTO = plato.getIngredientes().stream()
+            .map(pi -> new PlatoDTO.IngredienteCantidadDTO(
+                pi.getIngrediente().getId(),
+                pi.getCantidadNecesaria()
+            ))
+            .collect(Collectors.toList());
+
         return new PlatoDTO(
-                p.getId(),
-                p.getNombre(),
-                p.getDescripcion(),
-                p.getPrecio(),
-                p.getCategoria() != null ? p.getCategoria().getNombre() : null,
-                p.getRestaurante() != null ? p.getRestaurante().getId() : null,
-                null // lista de ingredientes se puede implementar luego
+            plato.getId(),
+            plato.getNombre(),
+            plato.getDescripcion(),
+            plato.getPrecio(),
+            categoriaDTO,
+            plato.getRestaurante().getId(),
+            ingredientesDTO
         );
     }
+
+
+
     
     public void asignarIngredientesAPlato(Long platoId, Map<Long, Double> ingredientesConCantidad) {
         Plato plato = platoRepository.findById(platoId)
@@ -181,9 +215,76 @@ public class PlatoService {
                     ingrediente.getUnidadMedida(),
                     ingrediente.getCantidadStock(),
                     relacion.getCantidadNecesaria()
+                    
             );
         }).collect(Collectors.toList());
     }
+    
+ // Obtener todos los platos con sus ingredientes
+    public List<PlatoDTO> obtenerTodosConIngredientes() {
+        return platoRepository.findAll().stream()
+                .map(plato -> {
+                    // Obtener los ingredientes del plato como PlatoIngredienteDTO
+                    List<PlatoIngredienteDTO> ingredientesPlato = obtenerIngredientesDePlatoDTO(plato.getId());
+                    
+                    // Convertir cada PlatoIngredienteDTO a IngredienteCantidadDTO
+                    List<IngredienteCantidadDTO> ingredientes = ingredientesPlato.stream()
+                            .map(pi -> new IngredienteCantidadDTO(pi.getIngredienteId(), pi.getCantidadNecesaria()))
+                            .collect(Collectors.toList());
+                    
+                    // Convertir el plato a PlatoDTO
+                    PlatoDTO dto = convertirAPlatoDTO(plato);
+                    
+                    // Asignar la lista de IngredienteCantidadDTO a PlatoDTO
+                    dto.setIngredientes(ingredientes);
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+ // Obtener platos por restaurante con ingredientes incluidos
+    public List<PlatoDTO> obtenerPorRestauranteConIngredientes(Long restauranteId) {
+        return platoRepository.findAll().stream()
+                .filter(p -> p.getRestaurante().getId().equals(restauranteId))
+                .map(plato -> {
+                    // Obtener los ingredientes del plato como PlatoIngredienteDTO
+                    List<PlatoIngredienteDTO> ingredientesPlato = obtenerIngredientesDePlatoDTO(plato.getId());
+                    
+                    // Convertir cada PlatoIngredienteDTO a IngredienteCantidadDTO
+                    List<IngredienteCantidadDTO> ingredientes = ingredientesPlato.stream()
+                            .map(pi -> new IngredienteCantidadDTO(pi.getIngredienteId(), pi.getCantidadNecesaria()))
+                            .collect(Collectors.toList());
+                    
+                    // Convertir el plato a PlatoDTO
+                    PlatoDTO dto = convertirAPlatoDTO(plato);
+                    
+                    // Asignar la lista de IngredienteCantidadDTO a PlatoDTO
+                    dto.setIngredientes(ingredientes);
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+    // Reasignar todos los ingredientes de un plato (sobrescribe los actuales)
+    public void reasignarIngredientesPlato(Long platoId, List<PlatoIngredienteDTO> nuevosIngredientes) {
+        Plato plato = platoRepository.findById(platoId)
+                .orElseThrow(() -> new RuntimeException("Plato no encontrado con ID: " + platoId));
+
+        // Eliminar relaciones existentes
+        platoIngredienteRepository.deleteByPlatoId(platoId);
+
+        // Crear nuevas relaciones
+        for (PlatoIngredienteDTO dto : nuevosIngredientes) {
+            Ingrediente ingrediente = ingredienteRepository.findById(dto.getIngredienteId())
+                    .orElseThrow(() -> new RuntimeException("Ingrediente no encontrado con ID: " + dto.getIngredienteId()));
+
+            PlatoIngrediente relacion = new PlatoIngrediente();
+            relacion.setPlato(plato);
+            relacion.setIngrediente(ingrediente);
+            relacion.setCantidadNecesaria(dto.getCantidadNecesaria());
+
+            platoIngredienteRepository.save(relacion);
+        }
+    }
+
 
 
 }

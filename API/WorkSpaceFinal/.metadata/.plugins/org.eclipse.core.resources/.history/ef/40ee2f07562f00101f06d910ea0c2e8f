@@ -1,0 +1,5 @@
+package com.dam.restaurante.repository;
+
+public class MesaRepository {
+
+}
