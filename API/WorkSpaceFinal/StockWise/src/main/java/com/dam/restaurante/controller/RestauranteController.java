@@ -48,8 +48,10 @@ public class RestauranteController {
 
     // Obtener un restaurante por ID
     @GetMapping("/{id}")
-    public Restaurante obtenerPorId(@PathVariable Long id) {
-        return restauranteService.obtenerPorId(id)
-                .orElseThrow(() -> new RuntimeException("Restaurante no encontradooo"));
+    public ResponseEntity<RestauranteDTO> obtenerPorId(@PathVariable Long id) {
+        Restaurante restaurante = restauranteService.obtenerPorId(id)
+            .orElseThrow(() -> new RuntimeException("Restaurante no encontradoooo"));
+
+        return ResponseEntity.ok(new RestauranteDTO(restaurante));
     }
 }
