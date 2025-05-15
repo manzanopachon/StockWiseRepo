@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.dam.restaurante.dto.RestauranteDTO;
 import com.dam.restaurante.model.Restaurante;
 import com.dam.restaurante.service.RestauranteService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/restaurantes")
 public class RestauranteController {

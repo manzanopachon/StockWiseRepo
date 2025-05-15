@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ import com.dam.restaurante.repository.RestauranteRepository;
 
 import jakarta.transaction.Transactional;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoController {
@@ -47,19 +48,20 @@ public class PedidoController {
 	 @PostMapping("/crear")
 	 @Transactional
 	 public ResponseEntity<?> crearPedido(@RequestBody PedidoDTO dto) {
-		 // 1. Verificar restaurante
+		// 1. Verificar restaurante
 		 Optional<Restaurante> restauranteOpt = restauranteRepository.findById(dto.getRestauranteId());
-		 if (restauranteOpt.isEmpty()) {
-			 return ResponseEntity.badRequest().body("Restaurante no encontrado");
-		 }
-		 Restaurante restaurante = restauranteOpt.get();
+		if (restauranteOpt.isEmpty()) {
+			return ResponseEntity.badRequest().body("Restaurante no encontrado");
+		}
+		Restaurante restaurante = restauranteOpt.get();
 	 
-		 // 2. Verificar platos
-		 List<Plato> platos = platoRepository.findAllById(dto.getPlatos());
-		 if (platos.size() != dto.getPlatos().size()) {
-			 return ResponseEntity.badRequest().body("Uno o más platos no existen");
-		 }
-	 
+		// 2. Verificar platos
+		List<Long> idsPlatos = dto.getPlatos();
+		List<Plato> platos = platoRepository.findAllById(idsPlatos);
+
+		if (platos.isEmpty()) {
+			return ResponseEntity.badRequest().body("No se encontró ningún plato válido");
+		}
 		 // 3. Crear el pedido desde el DTO
 		 Pedido pedido = Pedido.fromDTO(dto, restaurante, platos);
 	 
