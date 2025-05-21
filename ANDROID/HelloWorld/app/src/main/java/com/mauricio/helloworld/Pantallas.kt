@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
+
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,12 +46,38 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.common.InputImage
+
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
+//Color de los ingredientes
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.clickable
+import kotlinx.coroutines.CoroutineScope
+
+//Menu Desplegable
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Sort
+import androidx.compose.animation.animateContentSize
+
+//Platos
+
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.text.font.FontWeight
 import java.io.File
+import java.util.Calendar
+
+
+import android.app.DatePickerDialog
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.ui.unit.sp
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+import java.util.*
 
 
 @Composable
@@ -67,15 +93,13 @@ fun HomeScreen(onEmpleadoClick: () -> Unit, onClienteClick: () -> Unit) {
             .wrapContentWidth(Alignment.CenterHorizontally)
     )
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
-        Button(onClick = onClienteClick, modifier = Modifier.fillMaxWidth()) {
-            Text("Cliente")
-        }
+
         Button(onClick = onEmpleadoClick, modifier = Modifier.fillMaxWidth()) {
-            Text("Empleado")
+            Text("Ver tu almacén🔐")
         }
     }
 }
-
+/*
 @androidx.annotation.OptIn(ExperimentalGetImage::class)
 @Composable
 fun QrScanner(
@@ -142,7 +166,8 @@ fun QrScanner(
         }
     }
 }
-
+*/
+/*
 @Composable
 fun ClienteScreen(
     onContinuarClick: (Int, Int) -> Unit
@@ -181,7 +206,7 @@ fun ClienteScreen(
         }
     }
 }
-
+*/
 
 @Composable
 fun WebViewScreen(url: String) {
@@ -663,7 +688,18 @@ fun PantallaBienvenida(navController: NavController, nombreEmpleado: String, emp
             ) {
                 Text("Ver Platos")
             }
+
+            Button(
+                onClick = {
+                    navController.navigate("verPedidos/$empleadoId/$idRest")
+                },
+                modifier = Modifier.padding(top = 16.dp)
+            ) {
+                Text("📋 Ver Pedidos")
+            }
         }
+
+
 
         Button(
             onClick = {
@@ -676,6 +712,218 @@ fun PantallaBienvenida(navController: NavController, nombreEmpleado: String, emp
 
     }
 }
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+@Composable
+fun PedidosScreen(navController: NavController, restauranteId: Long) {
+    val context = LocalContext.current
+    var pedidos by remember { mutableStateOf<List<Pedido>>(emptyList()) }
+    var pedidosFiltrados by remember { mutableStateOf<List<Pedido>>(emptyList()) }
+    var fechaSeleccionada by remember { mutableStateOf("") }
+    var showDatePicker by remember { mutableStateOf(false) }
+
+    // Mapa para guardar el estado seleccionado por código de pedido
+    val estadosSeleccionados = remember { mutableStateMapOf<String, String>() }
+
+    // Cargar pedidos
+    LaunchedEffect(Unit) {
+        try {
+            val pedidosApi = withContext(Dispatchers.IO) {
+                RetrofitClient.apiService.obtenerTodosLosPedidos(restauranteId)
+            }
+            pedidos = pedidosApi
+            pedidosFiltrados = pedidosApi
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Text("📋 Pedidos del restaurante", style = MaterialTheme.typography.headlineSmall)
+        Spacer(Modifier.height(12.dp))
+
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            Button(onClick = { showDatePicker = true }) {
+                Text("📅 Filtrar por fecha")
+            }
+
+            Button(onClick = {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val total = pedidos.sumOf { it.total }
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(context, "Ganado total: €$total", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }) {
+                Text("💰 Total")
+            }
+        }
+
+        if (fechaSeleccionada.isNotEmpty()) {
+            Text("📆 Filtrado por: $fechaSeleccionada", modifier = Modifier.padding(top = 8.dp))
+        }
+
+        Spacer(Modifier.height(12.dp))
+
+        LazyColumn {
+            items(pedidosFiltrados) { pedido ->
+                val estadoSeleccionado = estadosSeleccionados[pedido.codigoPedido] ?: pedido.estadoPedido
+
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    elevation = CardDefaults.cardElevation(4.dp)
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text("🧾 Código: ${pedido.codigoPedido}", fontWeight = FontWeight.Bold)
+                        Text("Mesa: ${pedido.numeroMesa}")
+                        Text("Estado actual: ${pedido.estadoPedido}")
+                        Text("Estado nuevo: $estadoSeleccionado", fontWeight = FontWeight.Medium)
+                        if (estadoSeleccionado == "FINALIZADO" && pedido.estadoPedido != "FINALIZADO") {
+                            Text("⚠️ Se descontará stock", color = Color.Red, fontSize = 12.sp)
+                        }
+
+                        Text("Total: €${pedido.total}")
+                        val (fecha, hora) = formatearFecha(pedido.fechaHora)
+                        Text("📅 Fecha: $fecha")
+                        Text("⏰ Hora: $hora")
+                        Text("Platos:", fontWeight = FontWeight.SemiBold)
+                        (pedido.nombresPlatos ?: emptyList()).forEach {
+                            Text("- $it", modifier = Modifier.padding(start = 8.dp))
+                        }
+
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(top = 8.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Button(onClick = {
+                                actualizarEstado(pedido.codigoPedido, estadoSeleccionado, context) {
+                                    Toast.makeText(context, "Pedido actualizado a $estadoSeleccionado", Toast.LENGTH_SHORT).show()
+
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        recargarPedidos(restauranteId) {
+                                            pedidos = it
+                                            pedidosFiltrados = it
+                                        }
+                                    }
+                                }
+                            }) {
+                                Text("✔️ Confirmar")
+                            }
+
+                            EstadoDropdown(
+                                pedidoId = pedido.codigoPedido,
+                                estadoActual = estadoSeleccionado,
+                                context = context
+                            ) { nuevo ->
+                                estadosSeleccionados[pedido.codigoPedido] = nuevo
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if (showDatePicker) {
+        val calendar = Calendar.getInstance()
+        DatePickerDialog(
+            context,
+            { _, year, month, dayOfMonth ->
+                val selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
+                fechaSeleccionada = selectedDate
+                pedidosFiltrados = pedidos.filter {
+                    it.fechaHora.substring(0, 10) == selectedDate
+                }
+                showDatePicker = false
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+}
+
+fun actualizarEstado(
+    codigoPedido: String,
+    estado: String,
+    context: Context,
+    onSuccess: (descuentoAplicado: Boolean) -> Unit
+) {
+    CoroutineScope(Dispatchers.IO).launch {
+        try {
+            val pedido = RetrofitClient.apiService.buscarPedidoPorCodigo(codigoPedido)
+            RetrofitClient.apiService.cambiarEstado(pedido.id, estado)
+
+            val ingredientesDescontados = (estado == "FINALIZADO")
+
+            withContext(Dispatchers.Main) {
+                if (ingredientesDescontados) {
+                    Toast.makeText(context, "✅ Ingredientes descontados", Toast.LENGTH_SHORT).show()
+                }
+                onSuccess(ingredientesDescontados)
+            }
+
+        } catch (e: Exception) {
+            Log.e("Estado", "❌ Error al cambiar estado", e)
+        }
+    }
+}
+
+suspend fun recargarPedidos(restauranteId: Long, onResult: (List<Pedido>) -> Unit) {
+    val nuevosPedidos = RetrofitClient.apiService.obtenerTodosLosPedidos(restauranteId)
+    onResult(nuevosPedidos)
+}
+
+@Composable
+fun EstadoDropdown(
+    pedidoId: String,
+    estadoActual: String,
+    context: Context,
+    onEstadoSeleccionado: (String) -> Unit
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Box {
+        Button(onClick = { expanded = true }) {
+            Text(estadoActual)
+        }
+
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            listOf("PENDIENTE", "EN_PROCESO", "FINALIZADO").forEach { estado ->
+                DropdownMenuItem(
+                    onClick = {
+                        onEstadoSeleccionado(estado)
+                        expanded = false
+                    },
+                    text = { Text(estado) }
+                )
+            }
+        }
+    }
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun formatearFecha(fechaHora: String): Pair<String, String> {
+    return try {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSS")
+        val parsed = LocalDateTime.parse(fechaHora, formatter)
+        val fecha = parsed.toLocalDate().toString()
+        val hora = parsed.toLocalTime().withNano(0).toString() // hh:mm:ss sin milisegundos
+        Pair(fecha, hora)
+    } catch (e: Exception) {
+        Pair("Fecha inválida", "")
+    }
+}
+
+
+
+
 
 
 @Composable
@@ -694,9 +942,11 @@ fun DatosEmpleadoScreen(navController: NavController, empleadoId: Long) {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
             text = "Datos del empleado",
@@ -737,7 +987,10 @@ fun DatosEmpleadoScreen(navController: NavController, empleadoId: Long) {
         }
     }
 }
-
+//Para el menu desplegable
+enum class OrdenIngrediente {
+    NOMBRE, PROVEEDOR, PRIORIDAD
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -746,6 +999,10 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
     var empleado by remember { mutableStateOf<Empleado?>(null) }
     var ingredientes by remember { mutableStateOf<List<Ingrediente>>(emptyList()) }
     var errorMensaje by remember { mutableStateOf<String?>(null) }
+
+    // Orden actual + control del menú
+    var ordenSeleccionado by rememberSaveable { mutableStateOf(OrdenIngrediente.NOMBRE) }
+    var expanded by remember { mutableStateOf(false) }
 
     LaunchedEffect(empleadoId) {
         try {
@@ -764,6 +1021,19 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
             }
         } catch (e: Exception) {
             errorMensaje = "Error de red: ${e.localizedMessage}"
+        }
+    }
+
+    val ingredientesOrdenados = when (ordenSeleccionado) {
+        OrdenIngrediente.NOMBRE -> ingredientes.sortedBy { it.nombre.lowercase() }
+        OrdenIngrediente.PROVEEDOR -> ingredientes.sortedBy { it.proveedor?.lowercase() ?: ""}
+        OrdenIngrediente.PRIORIDAD -> ingredientes.sortedBy {
+            when {
+                it.cantidadStock < it.prioridadAlta -> 1
+                it.cantidadStock < it.prioridadMedia -> 2
+                it.cantidadStock < it.prioridadBaja -> 3
+                else -> 4
+            }
         }
     }
 
@@ -786,11 +1056,9 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
                 style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.primary
             )
-            Button(
-                onClick = {
-                    navController.navigate("nuevoIngrediente/$restauranteId")
-                }
-            ) {
+            Button(onClick = {
+                navController.navigate("nuevoIngrediente/$restauranteId")
+            }) {
                 Text("Nuevo")
             }
         }
@@ -803,11 +1071,75 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
 
             Spacer(Modifier.height(8.dp))
 
-            Text("Ingredientes del restaurante:", style = MaterialTheme.typography.titleLarge)
-            if (ingredientes.isNotEmpty()) {
-                Column(horizontalAlignment = Alignment.Start) {
-                    ingredientes.forEach { ingrediente ->
-                        Text("- ${ingrediente.nombre}: ${ingrediente.cantidadStock} ${ingrediente.unidadMedida}")
+            // Título + menú desplegable
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Ingredientes de \"${empleado?.restaurante?.nombre ?: "?"}\"",
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                Box {
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Default.Sort, contentDescription = "Ordenar")
+                    }
+
+                    DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+                        DropdownMenuItem(
+                            text = { Text("Ordenar por nombre") },
+                            onClick = {
+                                ordenSeleccionado = OrdenIngrediente.NOMBRE
+                                expanded = false
+                            }
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Ordenar por proveedor") },
+                            onClick = {
+                                ordenSeleccionado = OrdenIngrediente.PROVEEDOR
+                                expanded = false
+                            }
+                        )
+                        DropdownMenuItem(
+                            text = { Text("Ordenar por prioridad") },
+                            onClick = {
+                                ordenSeleccionado = OrdenIngrediente.PRIORIDAD
+                                expanded = false
+                            }
+                        )
+                    }
+                }
+            }
+
+            if (ingredientesOrdenados.isNotEmpty()) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.animateContentSize()
+                ) {
+                    ingredientesOrdenados.forEach { ingrediente ->
+                        val color = when {
+                            ingrediente.cantidadStock < ingrediente.prioridadAlta -> Color(0xFFFFCDD2)
+                            ingrediente.cantidadStock < ingrediente.prioridadMedia -> Color(0xFFFFF9C4)
+                            ingrediente.cantidadStock < ingrediente.prioridadBaja -> Color(0xFFC8E6C9)
+                            else -> Color(0xFFE0E0E0)
+                        }
+
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    navController.navigate("ingredienteDetalle/${ingrediente.id}")
+                                },
+                            colors = CardDefaults.cardColors(containerColor = color)
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Text(text = ingrediente.nombre, style = MaterialTheme.typography.titleMedium)
+                                Text(text = "Stock: ${ingrediente.cantidadStock} ${ingrediente.unidadMedida}")
+                                Text(text = "Proveedor: ${ingrediente.proveedor}")
+                            }
+                        }
                     }
                 }
             } else {
@@ -819,7 +1151,148 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
             Text(text = it, color = MaterialTheme.colorScheme.error)
         }
     }
+}
 
+
+@Composable
+fun DetalleIngredienteScreen(navController: NavController, ingredienteId: Long) {
+    val api = RetrofitClient.apiService
+    var ingrediente by remember { mutableStateOf<Ingrediente?>(null) }
+    var error by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(ingredienteId) {
+        try {
+            val result = withContext(Dispatchers.IO) {
+                api.getIngredienteById(ingredienteId)
+            }
+            ingrediente = result
+        } catch (e: Exception) {
+            error = "Error al cargar ingrediente: ${e.localizedMessage}"
+        }
+    }
+
+    ingrediente?.let { ing ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text("Detalle de: ${ing.nombre}", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.align(Alignment.CenterHorizontally))
+            Text("Nombre: ${ing.nombre}")
+            Text("Stock: ${ing.cantidadStock} ${ing.unidadMedida}")
+            Text("Proveedor: ${ing.proveedor}")
+            Text("Prioridad Alta: ${ing.prioridadAlta}")
+            Text("Prioridad Media: ${ing.prioridadMedia}")
+            Text("Prioridad Baja: ${ing.prioridadBaja}")
+            Button(onClick = {
+                navController.navigate("ingredienteEditar/${ing.id}")
+            }) {
+                Text("Editar")
+            }
+        }
+    } ?: run {
+        error?.let {
+            Text(text = it, color = MaterialTheme.colorScheme.error)
+        } ?: Text("Cargando...")
+    }
+}
+
+@Composable
+fun EditarIngredienteScreen(navController: NavController, ingredienteId: Long) {
+    val api = RetrofitClient.apiService
+    var ingrediente by remember { mutableStateOf<Ingrediente?>(null) }
+    var error by remember { mutableStateOf<String?>(null) }
+    var mensajeExito by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(ingredienteId) {
+        try {
+            ingrediente = withContext(Dispatchers.IO) {
+                api.getIngredienteById(ingredienteId)
+            }
+        } catch (e: Exception) {
+            error = "Error al cargar: ${e.localizedMessage}"
+        }
+    }
+
+    ingrediente?.let { ing ->
+        var nombre by remember { mutableStateOf(ing.nombre) }
+        var stock by remember { mutableStateOf(ing.cantidadStock.toString()) }
+        var proveedor by remember { mutableStateOf(ing.proveedor) }
+        var unidad by remember { mutableStateOf(ing.unidadMedida) }
+        var prioridadAlta by remember { mutableStateOf(ing.prioridadAlta.toString()) }
+        var prioridadMedia by remember { mutableStateOf(ing.prioridadMedia.toString()) }
+        var prioridadBaja by remember { mutableStateOf(ing.prioridadBaja.toString()) }
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text("Editar Ingrediente", style = MaterialTheme.typography.headlineMedium)
+
+            OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") })
+            OutlinedTextField(value = stock, onValueChange = { stock = it }, label = { Text("Stock") })
+            OutlinedTextField(value = proveedor.toString(), onValueChange = { proveedor = it }, label = { Text("Proveedor") })
+            OutlinedTextField(value = unidad, onValueChange = { unidad = it }, label = { Text("Unidad") })
+            OutlinedTextField(value = prioridadAlta, onValueChange = { prioridadAlta = it }, label = { Text("Prioridad Alta") })
+            OutlinedTextField(value = prioridadMedia, onValueChange = { prioridadMedia = it }, label = { Text("Prioridad Media") })
+            OutlinedTextField(value = prioridadBaja, onValueChange = { prioridadBaja = it }, label = { Text("Prioridad Baja") })
+
+            Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
+                Button(onClick = {
+                    try {
+                        val actualizado = ing.copy(
+                            nombre = nombre,
+                            cantidadStock = stock.toDoubleOrNull() ?: 0.0,
+                            proveedor = proveedor,
+                            unidadMedida = unidad,
+                            prioridadAlta = prioridadAlta.toDoubleOrNull() ?: 0.0,
+                            prioridadMedia = prioridadMedia.toDoubleOrNull() ?: 0.0,
+                            prioridadBaja = prioridadBaja.toDoubleOrNull() ?: 0.0
+                        )
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            api.actualizarIngrediente(ingredienteId, actualizado)
+                            withContext(Dispatchers.Main) {
+                                mensajeExito = "Ingrediente actualizado"
+                            }
+                        }
+                    } catch (e: Exception) {
+                        error = "Error al actualizar: ${e.localizedMessage}"
+                    }
+                }) {
+                    Text("Guardar")
+                }
+
+                Button(onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        api.eliminarIngrediente(ingredienteId)
+                        withContext(Dispatchers.Main) {
+                            navController.popBackStack() // Volver atrás
+                        }
+                    }
+                }, colors = ButtonDefaults.buttonColors(containerColor = Color.Red)) {
+                    Text("Eliminar", color = Color.White)
+                }
+            }
+
+            mensajeExito?.let {
+                Text(text = it, color = Color.Green)
+            }
+
+            error?.let {
+                Text(text = it, color = MaterialTheme.colorScheme.error)
+            }
+        }
+    } ?: run {
+        error?.let { Text(it, color = MaterialTheme.colorScheme.error) } ?: Text("Cargando...")
+    }
 }
 
 
@@ -1073,7 +1546,7 @@ fun PlatoScreen(navController: NavController, empleadoId: Long, restauranteId: L
     }
 }
 
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
     val api = RetrofitClient.apiService
@@ -1082,27 +1555,38 @@ fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
     var nombre by remember { mutableStateOf("") }
     var descripcion by remember { mutableStateOf("") }
     var precio by remember { mutableStateOf("") }
-    var categoria by remember { mutableStateOf("") }
 
+    // Categorías
+    var categorias by remember { mutableStateOf<List<CategoriaDTO>>(emptyList()) }
+    var categoriaSeleccionada by remember { mutableStateOf<CategoriaDTO?>(null) }
+    var expandedCategoria by remember { mutableStateOf(false) }
+
+    // Ingredientes
     var ingredientes by remember { mutableStateOf<List<Ingrediente>>(emptyList()) }
+    var searchText by remember { mutableStateOf("") }
     var ingredientesSeleccionados by remember { mutableStateOf<MutableMap<Long, Double>>(mutableMapOf()) }
 
     var mensajeError by remember { mutableStateOf<String?>(null) }
     var mensajeExito by remember { mutableStateOf<String?>(null) }
 
-    // Obtener los ingredientes del restaurante
+    var cantidadesTexto by remember { mutableStateOf<MutableMap<Long, String>>(mutableMapOf()) }
+
     LaunchedEffect(restauranteId) {
         try {
             ingredientes = api.getIngredientesByRestaurante(restauranteId)
-        } catch (e: HttpException) {
-            mensajeError = "Error al cargar ingredientes: ${e.code()} - ${e.message()}"
+            categorias = api.getCategorias()
+        } catch (e: Exception) {
+            mensajeError = "Error al cargar datos: ${e.localizedMessage}"
         }
     }
+
+    val ingredientesFiltrados = ingredientes
+        .filter { it.nombre.contains(searchText, ignoreCase = true) && !ingredientesSeleccionados.containsKey(it.id) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState()) // Esto habilita el scroll
+            .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -1130,50 +1614,113 @@ fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
             modifier = Modifier.fillMaxWidth()
         )
 
+        // Categoría desplegable
+        ExposedDropdownMenuBox(
+            expanded = expandedCategoria,
+            onExpandedChange = { expandedCategoria = !expandedCategoria }
+        ) {
+            OutlinedTextField(
+                value = categoriaSeleccionada?.nombre ?: "",
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Categoría") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedCategoria)
+                },
+                modifier = Modifier
+                    .menuAnchor()
+                    .fillMaxWidth()
+            )
+
+            ExposedDropdownMenu(
+                expanded = expandedCategoria,
+                onDismissRequest = { expandedCategoria = false }
+            ) {
+                categorias.forEach { cat ->
+                    DropdownMenuItem(
+                        text = { Text(cat.nombre) },
+                        onClick = {
+                            categoriaSeleccionada = cat
+                            expandedCategoria = false
+                        }
+                    )
+                }
+            }
+        }
+
+        // Buscador de ingredientes
         OutlinedTextField(
-            value = categoria,
-            onValueChange = { categoria = it },
-            label = { Text("Categoría") },
+            value = searchText,
+            onValueChange = { searchText = it },
+            label = { Text("Buscar ingrediente") },
             modifier = Modifier.fillMaxWidth()
         )
 
-        // Mostrar lista de ingredientes disponibles
-        Text("Ingredientes", style = MaterialTheme.typography.bodyLarge)
-        ingredientes.forEach { ingrediente ->
-            var cantidadIngrediente by remember { mutableStateOf("") }
-
-            Row(
+        if (searchText.isNotBlank()) {
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                    .heightIn(max = 200.dp) // Limita el alto
             ) {
-                Text(ingrediente.nombre)
-
-                OutlinedTextField(
-                    value = cantidadIngrediente,
-                    onValueChange = {
-                        cantidadIngrediente = it
-                        // Actualizar la cantidad de ingrediente seleccionado
-                        ingredientesSeleccionados[ingrediente.id] = cantidadIngrediente.toDoubleOrNull() ?: 0.0
-                    },
-                    label = { Text("Cantidad") },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    modifier = Modifier.width(120.dp)
-                )
+                items(ingredientesFiltrados) { ing ->
+                    Text(
+                        text = ing.nombre,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                ingredientesSeleccionados[ing.id] = 0.0
+                                cantidadesTexto[ing.id] = "0" // <-- INICIALIZA el texto editable
+                                searchText = ""
+                            }
+                            .padding(8.dp)
+                    )
+                }
             }
+        }
+
+        if (ingredientesSeleccionados.isNotEmpty()) {
+            Text("Ingredientes seleccionados:", style = MaterialTheme.typography.titleMedium)
+            ingredientesSeleccionados.forEach { (id, _) ->
+                val ing = ingredientes.find { it.id == id }
+                val cantidadTexto = cantidadesTexto[id] ?: ""
+
+                if (ing != null) {
+                    OutlinedTextField(
+                        value = cantidadTexto,
+                        onValueChange = {
+                            cantidadesTexto = cantidadesTexto.toMutableMap().apply {
+                                put(id, it)
+                            }
+
+                            ingredientesSeleccionados = ingredientesSeleccionados.toMutableMap().apply {
+                                put(id, it.replace(',', '.').toDoubleOrNull() ?: 0.0)
+                            }
+
+
+                        },
+                        label = { Text("${ing.nombre} (${ing.unidadMedida})") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+
         }
 
         Button(
             onClick = {
+                if (categoriaSeleccionada == null) {
+                    mensajeError = "Selecciona una categoría válida"
+                    return@Button
+                }
+
                 try {
-                    val categoriaDTO = CategoriaDTO(nombre = categoria)
                     val platoDTO = PlatoDTO(
                         id = 0L,
                         nombre = nombre,
                         descripcion = descripcion,
                         precio = precio.toDoubleOrNull() ?: 0.0,
-                        categoria = categoriaDTO,
+                        categoria = categoriaSeleccionada!!,
                         restauranteId = restauranteId,
                         ingredientes = ingredientesSeleccionados.map { (id, cantidad) ->
                             IngredienteCantidadDTO(ingredienteId = id, cantidad = cantidad)

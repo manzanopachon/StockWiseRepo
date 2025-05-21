@@ -3366,3 +3366,4 @@ java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.ni
 2025-05-15 19:22:01,744 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2025-05-15 19:22:01,758 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-05-15 19:22:01,762 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\jmaur\Documents\GitHub\StockWiseRepo\API\WorkSpaceFinal\StockWise\src\test\resources
+2025-05-15 20:05:29,380 [ForkJoinPool.commonPool-worker-15] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2025-05-15-20-05-29.tar.gz" created.

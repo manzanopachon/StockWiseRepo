@@ -1,15 +1,19 @@
+import com.mauricio.helloworld.CategoriaDTO
 import com.mauricio.helloworld.Empleado
 import com.mauricio.helloworld.Ingrediente
 import com.mauricio.helloworld.IngredienteRequest
 import com.mauricio.helloworld.IngredienteResponse
 import com.mauricio.helloworld.LoginRequest
 import com.mauricio.helloworld.LoginResponse
+import com.mauricio.helloworld.Pedido
 import com.mauricio.helloworld.PlatoDTO
 import com.mauricio.helloworld.Restaurante
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -60,6 +64,16 @@ interface ApiService {
     @POST("api/ingredientes/crear")
     fun crearIngrediente(@Body ingrediente: IngredienteRequest): Call<IngredienteResponse>
 
+    @GET("api/ingredientes/{id}")
+    suspend fun getIngredienteById(@Path("id") id: Long): Ingrediente
+
+    @PUT("api/ingredientes/{id}")
+    suspend fun actualizarIngrediente(@Path("id") id: Long, @Body ingrediente: Ingrediente): Ingrediente
+
+    @DELETE("api/ingredientes/{id}")
+    suspend fun eliminarIngrediente(@Path("id") id: Long): Void
+
+
     //PLATOS
 
     @GET("api/platos/restaurante/{restauranteId}")
@@ -85,5 +99,27 @@ interface ApiService {
         @Path("ingredienteId") ingredienteId: Long
     )
 
+    @GET("api/categorias")
+    suspend fun getCategorias(): List<CategoriaDTO>
+
+    //PEDIDOS
+
+    @GET("api/pedidos/restaurante/{id}/pendientes")
+    suspend fun obtenerPedidosPendientes(@Path("id") restauranteId: Long): List<Pedido>
+
+    @POST("api/pedidos/confirmar/{id}")
+    suspend fun confirmarPedido(@Path("id") id: Long): ResponseBody
+
+    @PATCH("api/pedidos/{id}/estado")
+    suspend fun cambiarEstado(
+        @Path("id") id: Long,
+        @Query("estado") estado: String
+    ): ResponseBody
+
+    @GET("api/pedidos/buscar/{codigo}")
+    suspend fun buscarPedidoPorCodigo(@Path("codigo") codigo: String): Pedido
+
+    @GET("api/pedidos/restaurante/{id}/todos")
+    suspend fun obtenerTodosLosPedidos(@Path("id") restauranteId: Long): List<Pedido>
 
 }

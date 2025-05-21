@@ -1,5 +1,5 @@
 package com.mauricio.helloworld
-data class CategoriaDTO(val nombre: String)
+//data class CategoriaDTO(val nombre: String)
 
 data class IngredienteCantidadDTO(
     val ingredienteId: Long,

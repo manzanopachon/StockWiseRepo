@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                                 onEmpleadoClick = { navController.navigate("empleadoOptions") }
                             )
                         }
-
+/*
                         composable("cliente") {
                             ClienteScreen { restauranteId, mesaId ->
                                 // Aquí rediriges a una pantalla web o WebView que construyas
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate("verCarta/${Uri.encode(url)}")
                             }
                         }
-
+*/
                         composable("verCarta/{url}",
                             arguments = listOf(navArgument("url") { type = NavType.StringType })
                         ) { backStackEntry ->
@@ -72,21 +72,31 @@ class MainActivity : ComponentActivity() {
                             LoginScreen(navController = navController)
                         }
 
-                        composable("verificarCodigo/{empleadoId}/{nombreEmpleado}") {
+                        composable("verificarCodigo/{empleadoId}/{nombreEmpleado}/{restauranteId}") {
                             val empleadoId = it.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             val nombreEmpleadoRaw = it.arguments?.getString("nombreEmpleado") ?: "Desconocido"
-                            val nombreEmpleado = URLDecoder.decode(nombreEmpleadoRaw,   StandardCharsets.UTF_8.toString())
+                            val nombreEmpleado = URLDecoder.decode(nombreEmpleadoRaw, StandardCharsets.UTF_8.toString())
+                            val restauranteId = it.arguments?.getString("restauranteId")?.toLong() ?: 0L
 
-                            VerificacionCodigoScreen(navController, empleadoId, nombreEmpleado)
+                            VerificacionCodigoScreen(
+                                navController,
+                                empleadoId,
+                                nombreEmpleado // si necesitas el restauranteId, pásalo también
+                            )
                         }
-
-
 
                         composable("bienvenida/{nombreEmpleado}/{empleadoId}") { backStackEntry ->
                             val nombreEmpleado = backStackEntry.arguments?.getString("nombreEmpleado") ?: "Desconocido"
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             PantallaBienvenida(navController, nombreEmpleado, empleadoId)
                         }
+
+                        composable("verPedidos/{empleadoId}/{restauranteId}") { backStackEntry ->
+                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
+                            PedidosScreen(navController, restauranteId)
+                        }
+
 
                         composable("empleadoDatos/{empleadoId}") { backStackEntry ->
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
@@ -103,6 +113,18 @@ class MainActivity : ComponentActivity() {
                             val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
                             IngredienteScreen(navController, restauranteId)
                         }
+
+                        composable("ingredienteDetalle/{ingredienteId}") {
+                            val ingredienteId = it.arguments?.getString("ingredienteId")?.toLongOrNull() ?: return@composable
+                            DetalleIngredienteScreen(navController, ingredienteId)
+                        }
+
+                        composable("ingredienteEditar/{ingredienteId}") {
+                            val ingredienteId = it.arguments?.getString("ingredienteId")?.toLongOrNull() ?: return@composable
+                            EditarIngredienteScreen(navController, ingredienteId)
+                        }
+
+
                         composable("platoScreen/{empleadoId}/{restauranteId}") { backStackEntry ->
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLongOrNull() ?: 0L
                             val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull() ?: 0L
