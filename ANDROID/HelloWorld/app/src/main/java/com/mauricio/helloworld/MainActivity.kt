@@ -2,53 +2,47 @@ package com.mauricio.helloworld
 
 import android.annotation.SuppressLint
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.mauricio.helloworld.ui.theme.HelloWorldTheme
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.mauricio.helloworld.screens.*
+import com.mauricio.helloworld.ui.theme.HelloWorldTheme
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
-
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             HelloWorldTheme {
                 val navController = rememberNavController()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) {
                     NavHost(navController = navController, startDestination = "home") {
+
                         composable("home") {
                             HomeScreen(
-                                onClienteClick = { navController.navigate("cliente") },
+
                                 onEmpleadoClick = { navController.navigate("empleadoOptions") }
                             )
                         }
-/*
-                        composable("cliente") {
-                            ClienteScreen { restauranteId, mesaId ->
-                                // Aquí rediriges a una pantalla web o WebView que construyas
-                                val url = "https://tuservidor.com/menu?restauranteId=$restauranteId&id_mesa=$mesaId"
-                                navController.navigate("verCarta/${Uri.encode(url)}")
-                            }
-                        }
-*/
+
                         composable("verCarta/{url}",
                             arguments = listOf(navArgument("url") { type = NavType.StringType })
                         ) { backStackEntry ->
@@ -63,11 +57,13 @@ class MainActivity : ComponentActivity() {
                                 onRegisterClick = { navController.navigate("registro") }
                             )
                         }
+
                         composable("registro") {
                             RegistroScreen(onRegisterSuccess = {
                                 navController.popBackStack("empleadoOptions", false)
                             })
                         }
+
                         composable("login") {
                             LoginScreen(navController = navController)
                         }
@@ -78,11 +74,7 @@ class MainActivity : ComponentActivity() {
                             val nombreEmpleado = URLDecoder.decode(nombreEmpleadoRaw, StandardCharsets.UTF_8.toString())
                             val restauranteId = it.arguments?.getString("restauranteId")?.toLong() ?: 0L
 
-                            VerificacionCodigoScreen(
-                                navController,
-                                empleadoId,
-                                nombreEmpleado // si necesitas el restauranteId, pásalo también
-                            )
+                            VerificacionCodigoScreen(navController, empleadoId, nombreEmpleado)
                         }
 
                         composable("bienvenida/{nombreEmpleado}/{empleadoId}") { backStackEntry ->
@@ -92,11 +84,9 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("verPedidos/{empleadoId}/{restauranteId}") { backStackEntry ->
-                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
                             PedidosScreen(navController, restauranteId)
                         }
-
 
                         composable("empleadoDatos/{empleadoId}") { backStackEntry ->
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
@@ -124,14 +114,12 @@ class MainActivity : ComponentActivity() {
                             EditarIngredienteScreen(navController, ingredienteId)
                         }
 
-
                         composable("platoScreen/{empleadoId}/{restauranteId}") { backStackEntry ->
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLongOrNull() ?: 0L
                             val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull() ?: 0L
 
                             if (empleadoId == 0L || restauranteId == 0L) {
-                                // Maneja el caso de IDs inválidos (por ejemplo, mostrar un mensaje de error)
-                                Log.e("PlatoScreen", "Empleado o restaurante no válidos: empleadoId=$empleadoId, restauranteId=$restauranteId")
+                                Log.e("PlatoScreen", "IDs inválidos: empleadoId=$empleadoId, restauranteId=$restauranteId")
                             } else {
                                 PlatoScreen(navController, empleadoId, restauranteId)
                             }
@@ -143,7 +131,6 @@ class MainActivity : ComponentActivity() {
                                 NuevoPlatoScreen(navController, it)
                             }
                         }
-
                     }
                 }
             }

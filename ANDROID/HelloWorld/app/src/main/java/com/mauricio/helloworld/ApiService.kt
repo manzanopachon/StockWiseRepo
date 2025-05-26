@@ -28,6 +28,8 @@ interface ApiService {
     @GET("restaurantes/nombre/{nombre}")
     fun buscarRestaurantePorNombre(@Path("nombre") nombre: String): Call<Restaurante>
 
+    @GET("api/restaurantes")
+    fun obtenerTodosLosRestaurantes(): Call<List<Restaurante>>
 
 
     //LOGIN

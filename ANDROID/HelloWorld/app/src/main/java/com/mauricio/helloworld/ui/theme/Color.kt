@@ -10,6 +10,7 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
-val RestaurantePrimary = Color(0xFF8B4513) // Marrón tipo madera
-val RestauranteSecondary = Color(0xFFFFA726) // Naranja tipo comida
-val RestauranteText = Color(0xFF3E2723) // Marrón oscuro
+// Nuevos colores azulados para la app
+val RestaurantePrimary = Color(0xFFE0F7FA)         // Azul cielo claro
+val RestauranteSecondary = Color(0xFF0288D1)       // Azul vibrante
+val RestauranteText = Color(0xFF01579B)            // Azul oscuro elegante
