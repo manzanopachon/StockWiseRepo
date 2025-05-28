@@ -1,4 +1,4 @@
-package com.mauricio.helloworld
+package com.mauricio.helloworld.service
 
 import android.annotation.SuppressLint
 import android.net.Uri

@@ -1,4 +1,4 @@
-package com.mauricio.helloworld
+package com.mauricio.helloworld.model
 
 data class Ingrediente(
     val id: Long,

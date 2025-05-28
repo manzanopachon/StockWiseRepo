@@ -1,9 +1,7 @@
 package com.mauricio.helloworld.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Visibility
@@ -19,9 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.mauricio.helloworld.Empleado
-import com.mauricio.helloworld.Restaurante
-import com.mauricio.helloworld.RetrofitInstance
+import com.mauricio.helloworld.model.Empleado
+import com.mauricio.helloworld.model.Restaurante
+import com.mauricio.helloworld.retrofit.RetrofitInstance
 import com.mauricio.helloworld.ui.theme.Caveat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

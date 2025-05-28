@@ -27,8 +27,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.Empleado
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.Empleado
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.ui.theme.Caveat
 import retrofit2.Call
 import retrofit2.Callback

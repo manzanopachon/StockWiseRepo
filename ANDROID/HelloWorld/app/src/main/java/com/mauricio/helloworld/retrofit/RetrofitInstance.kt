@@ -1,6 +1,6 @@
-package com.mauricio.helloworld
+package com.mauricio.helloworld.retrofit
 
-import ApiService
+import com.mauricio.helloworld.service.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

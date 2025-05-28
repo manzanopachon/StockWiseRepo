@@ -3,8 +3,8 @@ package com.mauricio.helloworld.screens.utils
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.mauricio.helloworld.Pedido
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.Pedido
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

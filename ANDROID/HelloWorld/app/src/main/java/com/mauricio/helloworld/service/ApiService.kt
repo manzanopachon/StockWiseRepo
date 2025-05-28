@@ -1,13 +1,15 @@
-import com.mauricio.helloworld.CategoriaDTO
-import com.mauricio.helloworld.Empleado
-import com.mauricio.helloworld.Ingrediente
-import com.mauricio.helloworld.IngredienteRequest
-import com.mauricio.helloworld.IngredienteResponse
-import com.mauricio.helloworld.LoginRequest
-import com.mauricio.helloworld.LoginResponse
-import com.mauricio.helloworld.Pedido
-import com.mauricio.helloworld.PlatoDTO
-import com.mauricio.helloworld.Restaurante
+package com.mauricio.helloworld.service
+
+import com.mauricio.helloworld.model.CategoriaDTO
+import com.mauricio.helloworld.model.Empleado
+import com.mauricio.helloworld.model.Ingrediente
+import com.mauricio.helloworld.model.IngredienteRequest
+import com.mauricio.helloworld.model.IngredienteResponse
+import com.mauricio.helloworld.model.LoginRequest
+import com.mauricio.helloworld.model.LoginResponse
+import com.mauricio.helloworld.model.Pedido
+import com.mauricio.helloworld.model.PlatoDTO
+import com.mauricio.helloworld.model.Restaurante
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body

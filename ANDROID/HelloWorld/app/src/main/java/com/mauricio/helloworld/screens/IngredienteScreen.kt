@@ -17,9 +17,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.IngredienteRequest
-import com.mauricio.helloworld.IngredienteResponse
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.IngredienteRequest
+import com.mauricio.helloworld.model.IngredienteResponse
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.ui.theme.Caveat
 import retrofit2.Call
 import retrofit2.Callback

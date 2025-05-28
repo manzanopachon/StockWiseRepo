@@ -1,7 +1,6 @@
 package com.mauricio.helloworld.screens
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -11,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -20,8 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.Pedido
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.Pedido
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.screens.utils.*
 import com.mauricio.helloworld.ui.theme.Caveat
 import kotlinx.coroutines.CoroutineScope

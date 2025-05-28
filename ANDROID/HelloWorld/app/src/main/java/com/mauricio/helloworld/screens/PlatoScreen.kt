@@ -1,6 +1,5 @@
 package com.mauricio.helloworld.screens
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -14,9 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.Ingrediente
-import com.mauricio.helloworld.PlatoDTO
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.Ingrediente
+import com.mauricio.helloworld.model.PlatoDTO
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.ui.theme.Caveat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

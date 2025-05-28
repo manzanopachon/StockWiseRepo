@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.Ingrediente
-import com.mauricio.helloworld.RetrofitClient
+import com.mauricio.helloworld.model.Ingrediente
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.ui.theme.Caveat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

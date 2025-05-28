@@ -10,7 +10,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -18,7 +17,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mauricio.helloworld.*
+import com.mauricio.helloworld.model.CategoriaDTO
+import com.mauricio.helloworld.model.Ingrediente
+import com.mauricio.helloworld.model.IngredienteCantidadDTO
+import com.mauricio.helloworld.model.PlatoDTO
+import com.mauricio.helloworld.retrofit.RetrofitClient
 import com.mauricio.helloworld.ui.theme.Caveat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
