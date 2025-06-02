@@ -4,6 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.*
@@ -23,6 +24,10 @@ import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.ui.text.input.ImeAction
 
 enum class OrdenIngrediente {
     NOMBRE, PROVEEDOR, PRIORIDAD
@@ -37,6 +42,7 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
     var errorMensaje by remember { mutableStateOf<String?>(null) }
     var ordenSeleccionado by rememberSaveable { mutableStateOf(OrdenIngrediente.NOMBRE) }
     var expanded by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
 
     LaunchedEffect(empleadoId) {
         try {
@@ -57,11 +63,14 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
             errorMensaje = "Error de red: ${e.localizedMessage}"
         }
     }
+    val ingredientesFiltrados = ingredientes.filter {
+        it.nombre.contains(searchQuery, ignoreCase = true)
+    }
 
     val ingredientesOrdenados = when (ordenSeleccionado) {
-        OrdenIngrediente.NOMBRE -> ingredientes.sortedBy { it.nombre.lowercase() }
-        OrdenIngrediente.PROVEEDOR -> ingredientes.sortedBy { it.proveedor?.lowercase() ?: "" }
-        OrdenIngrediente.PRIORIDAD -> ingredientes.sortedBy {
+        OrdenIngrediente.NOMBRE -> ingredientesFiltrados.sortedBy { it.nombre.lowercase() }
+        OrdenIngrediente.PROVEEDOR -> ingredientesFiltrados.sortedBy { it.proveedor?.lowercase() ?: "" }
+        OrdenIngrediente.PRIORIDAD -> ingredientesFiltrados.sortedBy {
             when {
                 it.cantidadStock < it.prioridadAlta -> 1
                 it.cantidadStock < it.prioridadMedia -> 2
@@ -79,6 +88,7 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
         modifier = Modifier
             .fillMaxSize()
             .background(gradient)
+            .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -102,7 +112,9 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)
             ) {
-                Text("➕ Nuevo")
+                Icon(Icons.Default.Add, contentDescription = null)
+                Spacer(modifier = Modifier.width(4.dp))
+                Text("Nuevo")
             }
         }
 
@@ -113,6 +125,15 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
             }
 
             Spacer(Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                label = { Text("🔍 Buscar ingrediente") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(Modifier.height(12.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),

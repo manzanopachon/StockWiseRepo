@@ -106,6 +106,36 @@ interface ApiService {
     @GET("api/categorias")
     suspend fun getCategorias(): List<CategoriaDTO>
 
+    //EDITAR PLATOS
+
+    //Obtener plato por ID
+    @GET("api/platos/{id}")
+    suspend fun obtenerPlatoPorId(@Path("id") platoId: Long): PlatoDTO
+
+    //Actualizar un plato
+    @PUT("api/platos/{id}")
+    suspend fun actualizarPlato(@Path("id") platoId: Long, @Body platoDTO: PlatoDTO): PlatoDTO
+
+    //Modificar cantidad de un ingrediente en un plato
+    @PUT("api/platos/{platoId}/ingredientes/{ingredienteId}")
+    suspend fun modificarCantidadIngrediente(
+        @Path("platoId") platoId: Long,
+        @Path("ingredienteId") ingredienteId: Long,
+        @Body nuevaCantidad: Double
+    ): ResponseBody
+
+    //Obtener ingredientes asignados a un plato
+    @GET("api/platos/{platoId}/ingredientes")
+    suspend fun obtenerIngredientesDePlato(@Path("platoId") platoId: Long): List<Ingrediente>
+
+    //Añadir ingredientes que no están en el plato
+    @POST("api/platos/{platoId}/ingredientes")
+    suspend fun asignarIngredientesAlPlato(
+        @Path("platoId") platoId: Long,
+        @Body ingredientesConCantidad: Map<Long, Double>
+    ): ResponseBody
+
+
     //PEDIDOS
 
     @GET("api/pedidos/restaurante/{id}/pendientes")

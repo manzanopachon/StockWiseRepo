@@ -88,6 +88,11 @@ class MainActivity : ComponentActivity() {
                             PedidosScreen(navController, restauranteId)
                         }
 
+                        composable("detallePedido/{codigoPedido}") { backStackEntry ->
+                            val codigoPedido = backStackEntry.arguments?.getString("codigoPedido") ?: ""
+                            DetallePedidoScreen(navController, codigoPedido)
+                        }
+
                         composable("empleadoDatos/{empleadoId}") { backStackEntry ->
                             val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             DatosEmpleadoScreen(navController, empleadoId)
@@ -131,6 +136,23 @@ class MainActivity : ComponentActivity() {
                                 NuevoPlatoScreen(navController, it)
                             }
                         }
+
+                        composable(
+                            route = "editarPlato/{platoId}/{restauranteId}",
+                        ) { backStackEntry ->
+                            val platoId = backStackEntry.arguments?.getString("platoId")?.toLongOrNull() ?: 0L
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLongOrNull() ?: 0L
+
+                            Log.d("EditarPlatoScreen", "platoId=$platoId, restauranteId=$restauranteId")
+
+                            if (platoId == 0L || restauranteId == 0L) {
+                                Log.e("EditarPlatoScreen", "IDs inválidos: platoId=$platoId, restauranteId=$restauranteId")
+                            } else {
+                                EditarPlatoScreen(navController, platoId, restauranteId)
+                            }
+                        }
+
+
                     }
                 }
             }

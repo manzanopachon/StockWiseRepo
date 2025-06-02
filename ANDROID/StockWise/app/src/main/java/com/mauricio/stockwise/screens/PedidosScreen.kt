@@ -5,6 +5,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -26,7 +26,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.Calendar
+import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -36,11 +36,11 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
     var pedidosFiltrados by remember { mutableStateOf<List<Pedido>>(emptyList()) }
     var fechaSeleccionada by remember { mutableStateOf("") }
     var showDatePicker by remember { mutableStateOf(false) }
-    val estadosSeleccionados = remember { mutableStateMapOf<String, String>() }
     var searchQuery by remember { mutableStateOf("") }
-    val pedidosFiltradosPorBusqueda = pedidosFiltrados.filter {
-        it.codigoPedido.contains(searchQuery, ignoreCase = true)
-    }
+
+    val pedidosFiltradosPorBusqueda = pedidosFiltrados
+        .filter { it.codigoPedido.contains(searchQuery, ignoreCase = true) }
+        .reversed() // Pedidos más recientes primero
 
     val gradient = Brush.verticalGradient(
         colors = listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
@@ -64,13 +64,20 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
             .background(brush = gradient)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text("📋 Pedidos del restaurante",
+            Text(
+                "📋 Pedidos del restaurante",
                 fontFamily = Caveat,
                 fontSize = 35.sp,
-                style = MaterialTheme.typography.headlineSmall, color = Color(0xFF00796B))
+                style = MaterialTheme.typography.headlineSmall,
+                color = Color(0xFF00796B)
+            )
+
             Spacer(Modifier.height(12.dp))
 
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
                 Button(
                     onClick = { showDatePicker = true },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)
@@ -80,12 +87,8 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
 
                 Button(
                     onClick = {
-                        CoroutineScope(Dispatchers.IO).launch {
-                            val total = pedidos.sumOf { it.total }
-                            withContext(Dispatchers.Main) {
-                                Toast.makeText(context, "Ganado total: €$total", Toast.LENGTH_LONG).show()
-                            }
-                        }
+                        val totalVisible = pedidosFiltradosPorBusqueda.sumOf { it.total }
+                        Toast.makeText(context, "Ganado total: €$totalVisible", Toast.LENGTH_LONG).show()
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)
                 ) {
@@ -99,73 +102,58 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
 
             Spacer(Modifier.height(12.dp))
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.End
-            ) {
-                OutlinedTextField(
-                    value = searchQuery,
-                    onValueChange = { searchQuery = it },
-                    label = { Text("🔍 Buscar código") },
-                    singleLine = true,
-                    modifier = Modifier
-                        .fillMaxWidth(0.6f)
-                )
-            }
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                label = { Text("🔍 Buscar código") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 items(pedidosFiltradosPorBusqueda) { pedido ->
-                    val estadoSeleccionado = estadosSeleccionados[pedido.codigoPedido] ?: pedido.estadoPedido
+                    val estadoSeleccionado = remember { mutableStateOf(pedido.estadoPedido) }
+                    val (fecha, hora) = formatearFecha(pedido.fechaHora)
 
                     Card(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                navController.navigate("detallePedido/${pedido.codigoPedido}")
+                            },
                         colors = CardDefaults.cardColors(containerColor = Color.White),
                         elevation = CardDefaults.cardElevation(4.dp)
                     ) {
                         Column(modifier = Modifier.padding(12.dp)) {
-                            Text("🧾 Código: ${pedido.codigoPedido}", fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                            Text("🪑 Mesa: ${pedido.numeroMesa}", fontWeight = FontWeight.Bold, color = Color(0xFF00796B))
-
+                            Text("🧾 Código: ${pedido.codigoPedido}", fontSize = 18.sp, color = Color(0xFF00796B))
                             Text(
-                                "📌 Estado: ${pedido.estadoPedido}",
-                                fontWeight = FontWeight.Bold,
-                                color = when (pedido.estadoPedido) {
+                                "📌 Estado: ${estadoSeleccionado.value}",
+                                fontSize = 16.sp,
+                                color = when (estadoSeleccionado.value) {
                                     "EN_PROCESO" -> Color(0xFFFF9800)
                                     "FINALIZADO" -> Color(0xFF4CAF50)
                                     "PENDIENTE" -> Color(0xFF2196F3)
                                     else -> Color.Black
                                 }
                             )
-
-                            if (estadoSeleccionado == "FINALIZADO" && pedido.estadoPedido != "FINALIZADO") {
-                                Text("⚠️ Se descontará stock", color = Color.Red, fontSize = 12.sp)
-                            }
-
-                            Text("💰 Total: €${pedido.total}")
-                            val (fecha, hora) = formatearFecha(pedido.fechaHora)
                             Text("📅 Fecha: $fecha")
                             Text("⏰ Hora: $hora")
 
-                            Text("🍽️ Platos:", fontWeight = FontWeight.SemiBold)
-                            if (pedido.detallesPlatos.isNullOrEmpty()) {
-                                Text("- No especificado", fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
-                            } else {
-                                pedido.detallesPlatos.forEach {
-                                    Text("- ${it.nombre}", modifier = Modifier.padding(start = 8.dp))
-                                }
-                            }
+                            Spacer(modifier = Modifier.height(8.dp))
 
                             Row(
-                                Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 8.dp),
+                                modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Button(
                                     onClick = {
-                                        actualizarEstado(pedido.codigoPedido, estadoSeleccionado, context) {
+                                        actualizarEstado(
+                                            pedido.codigoPedido,
+                                            estadoSeleccionado.value,
+                                            context
+                                        ) {
                                             Toast.makeText(context, "Pedido actualizado", Toast.LENGTH_SHORT).show()
                                             CoroutineScope(Dispatchers.IO).launch {
                                                 recargarPedidos(restauranteId) {
@@ -175,17 +163,17 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
                                             }
                                         }
                                     },
-                                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B))
                                 ) {
                                     Text("✔️ Confirmar")
                                 }
 
                                 EstadoDropdown(
                                     pedidoId = pedido.codigoPedido,
-                                    estadoActual = estadoSeleccionado,
+                                    estadoActual = estadoSeleccionado.value,
                                     context = context
                                 ) { nuevo ->
-                                    estadosSeleccionados[pedido.codigoPedido] = nuevo
+                                    estadoSeleccionado.value = nuevo
                                 }
                             }
                         }
