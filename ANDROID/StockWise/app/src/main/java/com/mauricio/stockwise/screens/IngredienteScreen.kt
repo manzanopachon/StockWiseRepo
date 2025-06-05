@@ -55,6 +55,16 @@ fun IngredienteScreen(navController: NavController, restauranteId: Long) {
         }
     }
 
+    val cameraPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            cameraLauncher.launch(null)
+        } else {
+            Toast.makeText(context, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     val gradient = Brush.verticalGradient(
         colors = listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
     )
@@ -88,7 +98,9 @@ fun IngredienteScreen(navController: NavController, restauranteId: Long) {
             OutlinedTextField(value = proveedor, onValueChange = { proveedor = it }, label = { Text("Proveedor") }, modifier = Modifier.fillMaxWidth())
 
             Button(
-                onClick = { cameraLauncher.launch(null) },
+                onClick = {
+                    cameraPermissionLauncher.launch(android.Manifest.permission.CAMERA)
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White),
                 modifier = Modifier
                     .fillMaxWidth()

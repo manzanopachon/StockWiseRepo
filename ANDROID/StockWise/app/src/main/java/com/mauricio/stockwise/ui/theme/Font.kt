@@ -9,3 +9,6 @@ val Caveat = FontFamily(
     Font(R.font.caveat, FontWeight.Normal),
     //Font(R.font.poppins_bold, FontWeight.Bold)
 )
+val Oswald = FontFamily(
+    Font(R.font.oswald, FontWeight.Normal)
+)

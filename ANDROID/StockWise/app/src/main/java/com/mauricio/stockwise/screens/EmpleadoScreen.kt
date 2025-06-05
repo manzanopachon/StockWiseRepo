@@ -28,6 +28,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.ui.text.input.ImeAction
+import com.mauricio.stockwise.ui.theme.Oswald
 
 enum class OrdenIngrediente {
     NOMBRE, PROVEEDOR, PRIORIDAD
@@ -101,7 +102,7 @@ fun EmpleadoScreen(navController: NavController, empleadoId: Long, restauranteId
         ) {
             Text(
                 text = "INGREDIENTES",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF00796B)

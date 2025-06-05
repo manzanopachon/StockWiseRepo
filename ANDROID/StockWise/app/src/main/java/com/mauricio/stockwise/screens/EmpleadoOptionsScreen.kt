@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import com.mauricio.stockwise.ui.theme.RestaurantePrimary
 import com.mauricio.stockwise.ui.theme.RestauranteSecondary
 import com.mauricio.stockwise.ui.theme.RestauranteText
@@ -45,7 +46,7 @@ fun EmpleadoOptionsScreen(
         ) {
             Text(
                 text = "👨‍🍳 Opciones de Empleado",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 color = RestauranteText,
                 fontSize = 35.sp,
                 fontWeight = FontWeight.Bold,

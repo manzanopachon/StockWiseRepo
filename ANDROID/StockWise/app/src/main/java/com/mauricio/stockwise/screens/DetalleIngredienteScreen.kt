@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -58,7 +59,7 @@ fun DetalleIngredienteScreen(navController: NavController, ingredienteId: Long) 
             ) {
                 Text(
                     "🧂 Detalle de: ${ing.nombre}",
-                    fontFamily = Caveat,
+                    fontFamily = Oswald,
                     fontSize = 35.sp,
                     style = MaterialTheme.typography.headlineMedium,
                     color = Color(0xFF00796B)

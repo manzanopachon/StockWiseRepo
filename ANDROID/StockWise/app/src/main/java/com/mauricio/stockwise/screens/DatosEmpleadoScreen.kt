@@ -17,6 +17,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Empleado
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -54,7 +55,7 @@ fun DatosEmpleadoScreen(navController: NavController, empleadoId: Long) {
         ) {
             Text(
                 "📋 Datos del empleado",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 style = MaterialTheme.typography.headlineLarge,
                 color = Color(0xFF00796B),

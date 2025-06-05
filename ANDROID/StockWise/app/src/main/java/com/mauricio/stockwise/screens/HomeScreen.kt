@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 
 
 @Composable
@@ -35,7 +36,7 @@ fun HomeScreen(onEmpleadoClick: () -> Unit) {
         ) {
             Text(
                 text = "Bienvenido a StockWise 🍽️",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF00796B)
