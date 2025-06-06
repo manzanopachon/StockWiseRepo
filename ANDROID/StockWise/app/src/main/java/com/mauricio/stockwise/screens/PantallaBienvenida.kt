@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -52,7 +53,7 @@ fun PantallaBienvenida(navController: NavController, nombreEmpleado: String, emp
         ) {
             Text(
                 text = "Bienvenido, $nombreEmpleado",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF00796B),

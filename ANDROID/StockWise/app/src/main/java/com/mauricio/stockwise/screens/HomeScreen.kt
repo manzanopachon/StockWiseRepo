@@ -35,14 +35,14 @@ fun HomeScreen(onEmpleadoClick: () -> Unit) {
                 .padding(24.dp)
         ) {
             Text(
-                text = "Bienvenido a StockWise 🍽️",
+                text = "Bienvenido a\nStockWise 🍽️",
                 fontFamily = Oswald,
                 fontSize = 35.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF00796B)
+                color = Color(0xFF00796B),
+                lineHeight = 45.sp, // <-- Espaciado entre las dos líneas
             )
 
-            // 👇 Botón animado personalizado
             BotonAnimadoEntrar(onClick = onEmpleadoClick)
         }
     }

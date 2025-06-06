@@ -21,6 +21,7 @@ import com.mauricio.stockwise.model.IngredienteRequest
 import com.mauricio.stockwise.model.IngredienteResponse
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,7 +83,7 @@ fun IngredienteScreen(navController: NavController, restauranteId: Long) {
         ) {
             Text(
                 "Añadir Ingrediente",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color(0xFF00796B),

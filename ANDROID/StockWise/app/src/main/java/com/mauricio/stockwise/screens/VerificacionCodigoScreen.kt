@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Empleado
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -108,7 +109,7 @@ fun VerificacionCodigoScreen(navController: NavController, empleadoId: Long, nom
         ) {
             Text(
                 "🔐 Verificación de Código",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color(0xFF00796B)
             )

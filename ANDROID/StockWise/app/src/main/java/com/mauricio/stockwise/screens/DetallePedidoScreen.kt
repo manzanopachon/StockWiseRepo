@@ -20,6 +20,7 @@ import com.mauricio.stockwise.model.Pedido
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.screens.utils.formatearFecha
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -58,7 +59,7 @@ fun DetallePedidoScreen(navController: NavController, codigoPedido: String) {
         ) {
             Text(
                 text = "📦 Detalles del Pedido",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 32.sp,
                 color = Color(0xFF00796B)
             )

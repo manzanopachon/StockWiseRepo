@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,7 +65,7 @@ fun EditarIngredienteScreen(navController: NavController, ingredienteId: Long) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text("✏️ Editar Ingrediente",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 style = MaterialTheme.typography.headlineMedium.copy(color = Color(0xFF00796B)))
 

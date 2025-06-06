@@ -43,6 +43,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.unit.sp
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -70,7 +71,7 @@ fun LoginScreen(navController: NavController) {
         ) {
             Text(
                 text = "INICIO DE SESIÓN",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF00796B),
                 modifier = Modifier.padding(bottom = 32.dp)

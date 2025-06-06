@@ -21,6 +21,7 @@ import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.model.PlatoDTO
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -70,7 +71,7 @@ fun EditarPlatoScreen(
         ) {
             Text(
                 text = "✏️ Editar Plato",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF00796B)

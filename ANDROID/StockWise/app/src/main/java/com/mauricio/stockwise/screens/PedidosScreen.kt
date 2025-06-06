@@ -22,6 +22,7 @@ import com.mauricio.stockwise.model.Pedido
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.screens.utils.*
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,7 +67,7 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 "📋 Pedidos del restaurante",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 fontSize = 35.sp,
                 style = MaterialTheme.typography.headlineSmall,
                 color = Color(0xFF00796B)

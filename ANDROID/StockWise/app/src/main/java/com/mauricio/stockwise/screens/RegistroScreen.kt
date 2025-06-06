@@ -21,6 +21,7 @@ import com.mauricio.stockwise.model.Empleado
 import com.mauricio.stockwise.model.Restaurante
 import com.mauricio.stockwise.retrofit.RetrofitInstance
 import com.mauricio.stockwise.ui.theme.Caveat
+import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -81,7 +82,7 @@ fun RegistroScreen(onRegisterSuccess: () -> Unit) {
         ) {
             Text(
                 "REGISTRO DE EMPLEADO",
-                fontFamily = Caveat,
+                fontFamily = Oswald,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF00796B)
             )
