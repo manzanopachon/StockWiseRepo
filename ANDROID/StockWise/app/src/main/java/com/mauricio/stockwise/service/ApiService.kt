@@ -5,6 +5,7 @@ import com.mauricio.stockwise.model.Empleado
 import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.model.IngredienteRequest
 import com.mauricio.stockwise.model.IngredienteResponse
+import com.mauricio.stockwise.model.LlamadaCamarero
 import com.mauricio.stockwise.model.LoginRequest
 import com.mauricio.stockwise.model.LoginResponse
 import com.mauricio.stockwise.model.Pedido
@@ -155,5 +156,11 @@ interface ApiService {
 
     @GET("api/pedidos/restaurante/{id}/todos")
     suspend fun obtenerTodosLosPedidos(@Path("id") restauranteId: Long): List<Pedido>
+
+
+    //NOTIFICACION
+
+    @GET("api/llamadas/pendientes")
+    suspend fun obtenerLlamadasPendientes(): List<LlamadaCamarero>
 
 }

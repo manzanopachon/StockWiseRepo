@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mauricio.stockwise.ui.theme.Caveat
@@ -45,12 +46,16 @@ fun EmpleadoOptionsScreen(
                 .padding(24.dp)
         ) {
             Text(
-                text = "👨‍🍳 Opciones de Empleado",
+                text = "👨‍🍳 Opciones de\nEmpleado",
                 fontFamily = Oswald,
                 color = RestauranteText,
-                fontSize = 35.sp,
+                fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 36.dp)
+                lineHeight = 42.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 36.dp)
             )
 
             val buttonModifier = Modifier
