@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mauricio.stockwise.screens.utils.BotonRegistrarseEstilizado
 import com.mauricio.stockwise.ui.theme.Caveat
 import com.mauricio.stockwise.ui.theme.Oswald
 import com.mauricio.stockwise.ui.theme.RestaurantePrimary
@@ -46,49 +47,19 @@ fun EmpleadoOptionsScreen(
                 .padding(24.dp)
         ) {
             Text(
-                text = "👨‍🍳 Opciones de\nEmpleado",
+                text = "Bienvenido a\nStockWise 🍽️",
                 fontFamily = Oswald,
-                color = RestauranteText,
-                fontSize = 32.sp,
+                fontSize = 35.sp,
                 fontWeight = FontWeight.Bold,
-                lineHeight = 42.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 36.dp)
+                color = Color(0xFF00796B),
+                lineHeight = 45.sp, //
             )
 
-            val buttonModifier = Modifier
-                .width(260.dp)
-                .height(64.dp)
+            BotonAnimadoEntrar(onClick = onLoginClick)
 
-            val shape = RoundedCornerShape(16.dp)
+            Spacer(modifier = Modifier.height(24.dp))
 
-            Button(
-                onClick = onLoginClick,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = RestauranteSecondary,
-                    contentColor = Color.White
-                ),
-                shape = shape,
-                modifier = buttonModifier
-            ) {
-                Text(text = "🔓 Iniciar Sesión", fontSize = 20.sp)
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = onRegisterClick,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF00796B),
-                    contentColor = Color.White
-                ),
-                shape = shape,
-                modifier = buttonModifier
-            ) {
-                Text(text = "📝 Registrarse", fontSize = 20.sp)
-            }
+            BotonRegistrarseEstilizado(onClick = onRegisterClick)
         }
     }
 }

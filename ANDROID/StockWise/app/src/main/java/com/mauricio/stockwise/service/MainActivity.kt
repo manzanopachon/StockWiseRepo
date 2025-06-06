@@ -34,14 +34,9 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
 
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    NavHost(navController = navController, startDestination = "home") {
+                    NavHost(navController = navController, startDestination = "empleadoOptions") {
 
-                        composable("home") {
-                            HomeScreen(
 
-                                onEmpleadoClick = { navController.navigate("empleadoOptions") }
-                            )
-                        }
 
                         composable("verCarta/{url}",
                             arguments = listOf(navArgument("url") { type = NavType.StringType })
@@ -76,6 +71,13 @@ class MainActivity : ComponentActivity() {
 
                             VerificacionCodigoScreen(navController, empleadoId, nombreEmpleado)
                         }
+
+                        composable("pantallaPrincipal/{empleadoId}/{restauranteId}") { backStackEntry ->
+                            val empleadoId = backStackEntry.arguments?.getString("empleadoId")?.toLong() ?: 0L
+                            val restauranteId = backStackEntry.arguments?.getString("restauranteId")?.toLong() ?: 0L
+                            PantallaPrincipal(navController, empleadoId, restauranteId)
+                        }
+
 
                         composable("bienvenida/{nombreEmpleado}/{empleadoId}") { backStackEntry ->
                             val nombreEmpleado = backStackEntry.arguments?.getString("nombreEmpleado") ?: "Desconocido"

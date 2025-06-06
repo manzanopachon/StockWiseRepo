@@ -2,10 +2,16 @@ package com.mauricio.stockwise.screens
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,11 +30,13 @@ import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+@OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun DetallePedidoScreen(navController: NavController, codigoPedido: String) {
     var pedido by remember { mutableStateOf<Pedido?>(null) }
     var error by remember { mutableStateOf<String?>(null) }
+    var visible by remember { mutableStateOf(true) }
 
     val api = RetrofitClient.apiService
 
@@ -46,61 +54,87 @@ fun DetallePedidoScreen(navController: NavController, codigoPedido: String) {
         colors = listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
     )
 
-    pedido?.let { pedido ->
-        val (fecha, hora) = formatearFecha(pedido.fechaHora)
-
-        Column(
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("📦 Detalles del Pedido", color = Color.White) },
+                navigationIcon = {
+                    IconButton(onClick = { visible = false }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Volver", tint = Color.White)
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF00796B))
+            )
+        },
+        containerColor = Color.Transparent
+    ) { paddingValues ->
+        AnimatedVisibility(
+            visible = visible,
+            exit = slideOutHorizontally(
+                targetOffsetX = { it },
+                animationSpec = tween(durationMillis = 300)
+            ),
             modifier = Modifier
                 .fillMaxSize()
-                .background(fondo)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+                .padding(paddingValues)
         ) {
-            Text(
-                text = "📦 Detalles del Pedido",
-                fontFamily = Oswald,
-                fontSize = 32.sp,
-                color = Color(0xFF00796B)
-            )
+            pedido?.let { pedido ->
+                val (fecha, hora) = formatearFecha(pedido.fechaHora)
 
-            Text("Código: ${pedido.codigoPedido}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Text("Estado: ${pedido.estadoPedido}", fontSize = 18.sp, color = when (pedido.estadoPedido) {
-                "EN_PROCESO" -> Color(0xFFFF9800)
-                "FINALIZADO" -> Color(0xFF4CAF50)
-                "PENDIENTE" -> Color(0xFF2196F3)
-                else -> Color.Black
-            })
-            Text("Mesa: ${pedido.numeroMesa}", fontSize = 18.sp)
-            Text("Fecha: $fecha", fontSize = 18.sp)
-            Text("Hora: $hora", fontSize = 18.sp)
-            Text("Total: €${pedido.total}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(fondo)
+                        .padding(16.dp)
+                        .verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text("Código: ${pedido.codigoPedido}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text("Estado: ${pedido.estadoPedido}", fontSize = 18.sp, color = when (pedido.estadoPedido) {
+                        "EN_PROCESO" -> Color(0xFFFF9800)
+                        "FINALIZADO" -> Color(0xFF4CAF50)
+                        "PENDIENTE" -> Color(0xFF2196F3)
+                        else -> Color.Black
+                    })
+                    Text("Mesa: ${pedido.numeroMesa}", fontSize = 18.sp)
+                    Text("Fecha: $fecha", fontSize = 18.sp)
+                    Text("Hora: $hora", fontSize = 18.sp)
+                    Text("Total: €${pedido.total}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
 
-            Divider(thickness = 1.dp, color = Color.Gray)
+                    Divider(thickness = 1.dp, color = Color.Gray)
 
-            Text("🍽️ Platos", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                    Text("🍽️ Platos", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
 
-            if (pedido.detallesPlatos.isNullOrEmpty()) {
-                Text("- No especificado", fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
-            } else {
-                pedido.detallesPlatos.forEach { plato ->
-                    Column(modifier = Modifier.padding(bottom = 8.dp)) {
-                        Text("- ${plato.nombre}", fontSize = 17.sp)
-                        Text("  Precio: €${plato.precio}", fontSize = 15.sp, color = Color.DarkGray)
+                    if (pedido.detallesPlatos.isNullOrEmpty()) {
+                        Text("- No especificado", fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
+                    } else {
+                        pedido.detallesPlatos.forEach { plato ->
+                            Column(modifier = Modifier.padding(bottom = 8.dp)) {
+                                Text("- ${plato.nombre}", fontSize = 17.sp)
+                                Text("  Precio: €${plato.precio}", fontSize = 15.sp, color = Color.DarkGray)
+                            }
+                        }
                     }
+                }
+            } ?: error?.let {
+                Text(it, modifier = Modifier.padding(16.dp), color = Color.Red)
+            } ?: run {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(fondo),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
                 }
             }
         }
-    } ?: error?.let {
-        Text(it, modifier = Modifier.padding(16.dp), color = Color.Red)
-    } ?: run {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(fondo),
-            contentAlignment = Alignment.Center
-        ) {
-            CircularProgressIndicator()
+
+        if (!visible) {
+            LaunchedEffect(Unit) {
+                kotlinx.coroutines.delay(300)
+                navController.popBackStack()
+            }
         }
     }
 }

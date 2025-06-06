@@ -81,7 +81,7 @@ fun RegistroScreen(onRegisterSuccess: () -> Unit) {
                 .padding(24.dp)
         ) {
             Text(
-                "REGISTRO DE EMPLEADO",
+                "✍ REGISTRO DE EMPLEADO",
                 fontFamily = Oswald,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF00796B)
@@ -209,7 +209,7 @@ fun RegistroScreen(onRegisterSuccess: () -> Unit) {
                     .fillMaxWidth()
                     .height(56.dp)
             ) {
-                Text("Registrarse")
+                Text("🖊 Registrarse")
             }
 
             if (isLoading) {

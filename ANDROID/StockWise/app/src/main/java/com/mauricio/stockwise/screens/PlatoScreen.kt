@@ -45,8 +45,11 @@ fun PlatoScreen(navController: NavController, empleadoId: Long, restauranteId: L
         try {
             val platosResult = withContext(Dispatchers.IO) {
                 api.obtenerPlatosPorRestaurante(restauranteId)
+
             }
             platos = platosResult
+            Log.d("PlatoScreen", "empleadoId=$empleadoId, restauranteId=$restauranteId")
+
             val ingredientesResult = withContext(Dispatchers.IO) {
                 api.getIngredientesByRestaurante(restauranteId)
             }

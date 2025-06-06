@@ -127,7 +127,7 @@ fun BotonAnimadoEntrar(onClick: () -> Unit) {
                 modifier = Modifier.padding(end = 6.dp)
             )
             Text(
-                text = "Entrar como Empleado",
+                text = "Iniciar Sesión",
                 fontSize = 20.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold,

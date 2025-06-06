@@ -66,7 +66,7 @@ fun DatosEmpleadoScreen(navController: NavController, empleadoId: Long) {
                 DatoItem(titulo = "👤 Nombre", valor = it.nombre)
                 DatoItem(titulo = "🧾 Apellidos", valor = it.apellidos)
                 DatoItem(titulo = "📧 Correo", valor = it.correo)
-                DatoItem(titulo = "💼 Posición", valor = it.puestoTrabajo)
+                DatoItem(titulo = "💼 Puesto", valor = it.puestoTrabajo)
                 DatoItem(titulo = "🏢 Restaurante", valor = it.restaurante.nombre)
             } ?: Text("Cargando datos...", fontSize = 18.sp)
 

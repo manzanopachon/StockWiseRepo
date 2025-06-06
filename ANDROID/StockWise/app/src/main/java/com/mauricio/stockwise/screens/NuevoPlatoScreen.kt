@@ -1,5 +1,8 @@
 package com.mauricio.stockwise.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -8,6 +11,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -33,6 +39,7 @@ import kotlinx.coroutines.withContext
 fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
     val api = RetrofitClient.apiService
     val scope = rememberCoroutineScope()
+    var visible by remember { mutableStateOf(true) }
 
     var nombre by remember { mutableStateOf("") }
     var descripcion by remember { mutableStateOf("") }
@@ -67,123 +74,154 @@ fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
         listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
     )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(gradient)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        Text("Nuevo Plato",
-            fontFamily = Oswald,
-            fontSize = 35.sp,
-            style = MaterialTheme.typography.headlineMedium, color = Color(0xFF00796B))
-
-        OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") }, modifier = Modifier.fillMaxWidth())
-        OutlinedTextField(value = descripcion, onValueChange = { descripcion = it }, label = { Text("Descripción") }, modifier = Modifier.fillMaxWidth())
-        OutlinedTextField(value = precio, onValueChange = { precio = it }, label = { Text("Precio (€)") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), modifier = Modifier.fillMaxWidth())
-
-        ExposedDropdownMenuBox(expanded = expandedCategoria, onExpandedChange = { expandedCategoria = !expandedCategoria }) {
-            OutlinedTextField(
-                value = categoriaSeleccionada?.nombre ?: "",
-                onValueChange = {},
-                readOnly = true,
-                label = { Text("Categoría") },
-                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedCategoria) },
-                modifier = Modifier.menuAnchor().fillMaxWidth()
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("➕ Nuevo Plato", color = Color.White) },
+                navigationIcon = {
+                    IconButton(onClick = { visible = false }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Volver", tint = Color.White)
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF00796B))
             )
+        },
+        containerColor = Color.Transparent
+    ) { paddingValues ->
+        AnimatedVisibility(
+            visible = visible,
+            exit = slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(300)),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .background(gradient)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") }, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(value = descripcion, onValueChange = { descripcion = it }, label = { Text("Descripción") }, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(value = precio, onValueChange = { precio = it }, label = { Text("Precio (€)") }, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number), modifier = Modifier.fillMaxWidth())
 
-            ExposedDropdownMenu(expanded = expandedCategoria, onDismissRequest = { expandedCategoria = false }) {
-                categorias.forEach { cat ->
-                    DropdownMenuItem(
-                        text = { Text(cat.nombre) },
-                        onClick = {
-                            categoriaSeleccionada = cat
-                            expandedCategoria = false
-                        }
-                    )
-                }
-            }
-        }
-
-        OutlinedTextField(value = searchText, onValueChange = { searchText = it }, label = { Text("Buscar ingrediente") }, modifier = Modifier.fillMaxWidth())
-
-        if (searchText.isNotBlank()) {
-            LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 200.dp)) {
-                items(ingredientesFiltrados) { ing ->
-                    Text(
-                        text = ing.nombre,
-                        modifier = Modifier.fillMaxWidth().clickable {
-                            ingredientesSeleccionados[ing.id] = 0.0
-                            cantidadesTexto[ing.id] = ""
-                            searchText = ""
-                        }.padding(8.dp)
-                    )
-                }
-            }
-        }
-
-        if (ingredientesSeleccionados.isNotEmpty()) {
-            Text("Ingredientes seleccionados:", style = MaterialTheme.typography.titleMedium, color = Color(0xFF00796B))
-            ingredientesSeleccionados.forEach { (id, _) ->
-                val ing = ingredientes.find { it.id == id }
-                val cantidadTexto = cantidadesTexto[id] ?: ""
-                if (ing != null) {
+                ExposedDropdownMenuBox(expanded = expandedCategoria, onExpandedChange = { expandedCategoria = !expandedCategoria }) {
                     OutlinedTextField(
-                        value = cantidadTexto,
-                        onValueChange = {
-                            cantidadesTexto = cantidadesTexto.toMutableMap().apply { put(id, it) }
-                            ingredientesSeleccionados = ingredientesSeleccionados.toMutableMap().apply { put(id, it.replace(',', '.').toDoubleOrNull() ?: 0.0) }
-                        },
-                        label = { Text("${ing.nombre} (${ing.unidadMedida})") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth()
+                        value = categoriaSeleccionada?.nombre ?: "",
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Categoría") },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedCategoria) },
+                        modifier = Modifier.menuAnchor().fillMaxWidth()
                     )
-                }
-            }
-        }
 
-        Button(onClick = {
-            if (categoriaSeleccionada == null) {
-                mensajeError = "Selecciona una categoría válida"
-                return@Button
-            }
-            try {
-                val platoDTO = PlatoDTO(
-                    id = 0L,
-                    nombre = nombre,
-                    descripcion = descripcion,
-                    precio = precio.toDoubleOrNull() ?: 0.0,
-                    categoria = categoriaSeleccionada!!,
-                    restauranteId = restauranteId,
-                    ingredientes = ingredientesSeleccionados.map { (id, cantidad) ->
-                        IngredienteCantidadDTO(ingredienteId = id, cantidad = cantidad)
+                    ExposedDropdownMenu(expanded = expandedCategoria, onDismissRequest = { expandedCategoria = false }) {
+                        categorias.forEach { cat ->
+                            DropdownMenuItem(
+                                text = { Text(cat.nombre) },
+                                onClick = {
+                                    categoriaSeleccionada = cat
+                                    expandedCategoria = false
+                                }
+                            )
+                        }
                     }
-                )
+                }
 
-                scope.launch {
+                OutlinedTextField(value = searchText, onValueChange = { searchText = it }, label = { Text("Buscar ingrediente") }, modifier = Modifier.fillMaxWidth())
+
+                if (searchText.isNotBlank()) {
+                    LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 200.dp)) {
+                        items(ingredientesFiltrados) { ing ->
+                            Text(
+                                text = ing.nombre,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        ingredientesSeleccionados[ing.id] = 0.0
+                                        cantidadesTexto[ing.id] = ""
+                                        searchText = ""
+                                    }
+                                    .padding(8.dp)
+                            )
+                        }
+                    }
+                }
+
+                if (ingredientesSeleccionados.isNotEmpty()) {
+                    Text("Ingredientes seleccionados:", style = MaterialTheme.typography.titleMedium, color = Color(0xFF00796B))
+                    ingredientesSeleccionados.forEach { (id, _) ->
+                        val ing = ingredientes.find { it.id == id }
+                        val cantidadTexto = cantidadesTexto[id] ?: ""
+                        if (ing != null) {
+                            OutlinedTextField(
+                                value = cantidadTexto,
+                                onValueChange = {
+                                    cantidadesTexto = cantidadesTexto.toMutableMap().apply { put(id, it) }
+                                    ingredientesSeleccionados = ingredientesSeleccionados.toMutableMap().apply {
+                                        put(id, it.replace(',', '.').toDoubleOrNull() ?: 0.0)
+                                    }
+                                },
+                                label = { Text("${ing.nombre} (${ing.unidadMedida})") },
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    }
+                }
+
+                Button(onClick = {
+                    if (categoriaSeleccionada == null) {
+                        mensajeError = "Selecciona una categoría válida"
+                        return@Button
+                    }
                     try {
-                        withContext(Dispatchers.IO) { api.crearPlato(platoDTO) }
-                        mensajeExito = "Plato creado correctamente"
-                        navController.popBackStack()
+                        val platoDTO = PlatoDTO(
+                            id = 0L,
+                            nombre = nombre,
+                            descripcion = descripcion,
+                            precio = precio.toDoubleOrNull() ?: 0.0,
+                            categoria = categoriaSeleccionada!!,
+                            restauranteId = restauranteId,
+                            ingredientes = ingredientesSeleccionados.map { (id, cantidad) ->
+                                IngredienteCantidadDTO(ingredienteId = id, cantidad = cantidad)
+                            }
+                        )
+
+                        scope.launch {
+                            try {
+                                withContext(Dispatchers.IO) { api.crearPlato(platoDTO) }
+                                mensajeExito = "Plato creado correctamente"
+                                visible = false
+                            } catch (e: Exception) {
+                                mensajeError = "Error al crear plato: ${e.localizedMessage}"
+                            }
+                        }
                     } catch (e: Exception) {
-                        mensajeError = "Error al crear plato: ${e.localizedMessage}"
+                        mensajeError = "Campos inválidos"
                     }
+                }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)) {
+                    Text("Guardar")
                 }
-            } catch (e: Exception) {
-                mensajeError = "Campos inválidos"
+
+                mensajeError?.let {
+                    Text(it, color = MaterialTheme.colorScheme.error)
+                }
+
+                mensajeExito?.let {
+                    Text(it, color = Color(0xFF00796B))
+                }
             }
-        }, modifier = Modifier.fillMaxWidth(), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White)) {
-            Text("Guardar")
         }
 
-        mensajeError?.let {
-            Text(it, color = MaterialTheme.colorScheme.error)
-        }
-
-        mensajeExito?.let {
-            Text(it, color = Color(0xFF00796B))
+        if (!visible) {
+            LaunchedEffect(Unit) {
+                kotlinx.coroutines.delay(300)
+                navController.popBackStack()
+            }
         }
     }
 }
+

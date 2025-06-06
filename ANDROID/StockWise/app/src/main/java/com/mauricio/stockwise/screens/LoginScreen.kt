@@ -60,7 +60,7 @@ fun LoginScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "INICIO DE SESIÓN",
+                text = "🔑INICIO DE SESIÓN",
                 fontFamily = Oswald,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF00796B),
@@ -131,7 +131,7 @@ fun LoginScreen(navController: NavController) {
                                         val intent = Intent(context, LlamadaPollingService::class.java)
                                         context.startService(intent)
 
-                                        navController.navigate("bienvenida/$nombreEmpleado/$empleadoId")
+                                        navController.navigate("pantallaPrincipal/$empleadoId/$restauranteId")
                                     } else {
                                         navController.navigate("verificarCodigo/$empleadoId/$nombreCodificado/$restauranteId")
                                     }
@@ -158,7 +158,7 @@ fun LoginScreen(navController: NavController) {
                     .padding(top = 32.dp)
             ) {
                 Text(
-                    text = "🔐 Iniciar sesión",
+                    text = "🔓 Iniciar sesión",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )

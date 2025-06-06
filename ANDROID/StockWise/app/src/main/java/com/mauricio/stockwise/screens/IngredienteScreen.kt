@@ -5,8 +5,14 @@ import android.graphics.Bitmap
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -27,10 +33,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IngredienteScreen(navController: NavController, restauranteId: Long) {
     val context = LocalContext.current
     val api = RetrofitClient.apiService
+    var visible by remember { mutableStateOf(true) }
 
     var nombre by remember { mutableStateOf("") }
     var cantidad by remember { mutableStateOf("") }
@@ -70,87 +78,106 @@ fun IngredienteScreen(navController: NavController, restauranteId: Long) {
         colors = listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
     )
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(brush = gradient)
-            .padding(16.dp),
-        contentAlignment = Alignment.TopCenter
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(
-                "Añadir Ingrediente",
-                fontFamily = Oswald,
-                fontSize = 35.sp,
-                style = MaterialTheme.typography.headlineMedium,
-                color = Color(0xFF00796B),
-                modifier = Modifier.padding(vertical = 24.dp)
-            )
-
-            OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = cantidad, onValueChange = { cantidad = it }, label = { Text("Cantidad") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = unidad, onValueChange = { unidad = it }, label = { Text("Unidad de medida") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = prioridadBaja, onValueChange = { prioridadBaja = it }, label = { Text("Prioridad baja") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = prioridadMedia, onValueChange = { prioridadMedia = it }, label = { Text("Prioridad media") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = prioridadAlta, onValueChange = { prioridadAlta = it }, label = { Text("Prioridad alta") }, modifier = Modifier.fillMaxWidth())
-            OutlinedTextField(value = proveedor, onValueChange = { proveedor = it }, label = { Text("Proveedor") }, modifier = Modifier.fillMaxWidth())
-
-            Button(
-                onClick = {
-                    cameraPermissionLauncher.launch(android.Manifest.permission.CAMERA)
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp)
-            ) {
-                Text("📷 Tomar Foto")
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Button(
-                onClick = {
-                    try {
-                        val ingrediente = IngredienteRequest(
-                            nombre = nombre,
-                            cantidadStock = cantidad.toDouble(),
-                            unidadMedida = unidad,
-                            prioridadBaja = prioridadBaja.toDouble(),
-                            prioridadMedia = prioridadMedia.toDouble(),
-                            prioridadAlta = prioridadAlta.toDouble(),
-                            proveedor = proveedor,
-                            fotoUrl = fotoUrl.value,
-                            restauranteId = restauranteId
-                        )
-
-                        api.crearIngrediente(ingrediente).enqueue(object : Callback<IngredienteResponse> {
-                            override fun onResponse(call: Call<IngredienteResponse>, response: Response<IngredienteResponse>) {
-                                if (response.isSuccessful) {
-                                    val ingredienteCreado = response.body()
-                                    Toast.makeText(context, "Ingrediente creado: ${ingredienteCreado?.nombre}", Toast.LENGTH_SHORT).show()
-                                    navController.popBackStack()
-                                } else {
-                                    Toast.makeText(context, "Error al crear: ${response.code()} ${response.message()}", Toast.LENGTH_LONG).show()
-                                }
-                            }
-
-                            override fun onFailure(call: Call<IngredienteResponse>, t: Throwable) {
-                                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                            }
-                        })
-
-                    } catch (e: Exception) {
-                        Toast.makeText(context, "Datos inválidos", Toast.LENGTH_SHORT).show()
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Nuevo Ingrediente", color = Color.White) },
+                navigationIcon = {
+                    IconButton(onClick = { visible = false }) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Volver", tint = Color.White)
                     }
                 },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White),
-                modifier = Modifier.fillMaxWidth()
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFF00796B))
+            )
+        },
+        containerColor = Color.Transparent
+    ) { paddingValues ->
+        AnimatedVisibility(
+            visible = visible,
+            exit = slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(300)),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(brush = gradient)
+                    .padding(16.dp),
+                contentAlignment = Alignment.TopCenter
             ) {
-                Text("💾 Guardar Ingrediente")
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = cantidad, onValueChange = { cantidad = it }, label = { Text("Cantidad") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = unidad, onValueChange = { unidad = it }, label = { Text("Unidad de medida") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = prioridadBaja, onValueChange = { prioridadBaja = it }, label = { Text("Prioridad baja") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = prioridadMedia, onValueChange = { prioridadMedia = it }, label = { Text("Prioridad media") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = prioridadAlta, onValueChange = { prioridadAlta = it }, label = { Text("Prioridad alta") }, modifier = Modifier.fillMaxWidth())
+                    OutlinedTextField(value = proveedor, onValueChange = { proveedor = it }, label = { Text("Proveedor") }, modifier = Modifier.fillMaxWidth())
+
+                    Button(
+                        onClick = { cameraPermissionLauncher.launch(android.Manifest.permission.CAMERA) },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 16.dp)
+                    ) {
+                        Text("📷 Tomar Foto")
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Button(
+                        onClick = {
+                            try {
+                                val ingrediente = IngredienteRequest(
+                                    nombre = nombre,
+                                    cantidadStock = cantidad.toDouble(),
+                                    unidadMedida = unidad,
+                                    prioridadBaja = prioridadBaja.toDouble(),
+                                    prioridadMedia = prioridadMedia.toDouble(),
+                                    prioridadAlta = prioridadAlta.toDouble(),
+                                    proveedor = proveedor,
+                                    fotoUrl = fotoUrl.value,
+                                    restauranteId = restauranteId
+                                )
+
+                                api.crearIngrediente(ingrediente).enqueue(object : Callback<IngredienteResponse> {
+                                    override fun onResponse(call: Call<IngredienteResponse>, response: Response<IngredienteResponse>) {
+                                        if (response.isSuccessful) {
+                                            val ingredienteCreado = response.body()
+                                            Toast.makeText(context, "Ingrediente creado: ${ingredienteCreado?.nombre}", Toast.LENGTH_SHORT).show()
+                                            visible = false
+                                        } else {
+                                            Toast.makeText(context, "Error al crear: ${response.code()} ${response.message()}", Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<IngredienteResponse>, t: Throwable) {
+                                        Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                })
+
+                            } catch (e: Exception) {
+                                Toast.makeText(context, "Datos inválidos", Toast.LENGTH_SHORT).show()
+                            }
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00796B), contentColor = Color.White),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("💾 Guardar Ingrediente")
+                    }
+                }
+            }
+        }
+
+        if (!visible) {
+            LaunchedEffect(Unit) {
+                kotlinx.coroutines.delay(300)
+                navController.popBackStack()
             }
         }
     }
