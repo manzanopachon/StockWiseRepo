@@ -37,6 +37,14 @@ android {
     buildFeatures {
         compose = true
     }
+    applicationVariants.all {
+        outputs.all {
+            if (name == "debug") {
+                (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName = "stockwise.apk"
+            }
+        }
+    }
+
 }
 
 dependencies {
