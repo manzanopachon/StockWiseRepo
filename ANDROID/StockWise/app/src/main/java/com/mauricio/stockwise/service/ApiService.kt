@@ -163,4 +163,9 @@ interface ApiService {
     @GET("api/llamadas/pendientes")
     suspend fun obtenerLlamadasPendientes(): List<LlamadaCamarero>
 
+    @GET("api/restaurantes/{id}")
+    suspend fun getRestaurantePorId(@Path("id") id: Long): Restaurante
+    @POST("api/llamadas/atender/{id}")
+    suspend fun marcarLlamadaComoAtendida(@Path("id") id: Long): Void
+
 }
