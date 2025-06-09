@@ -25,6 +25,7 @@ import com.mauricio.stockwise.ui.theme.Oswald
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,7 +71,8 @@ fun RegistroScreen(onRegisterSuccess: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(gradient),
+            .background(gradient)
+            .hideKeyboardOnTap(),
         contentAlignment = Alignment.Center
     ) {
         Column(

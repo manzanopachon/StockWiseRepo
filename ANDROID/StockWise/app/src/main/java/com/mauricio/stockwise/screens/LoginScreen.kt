@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -34,6 +35,16 @@ import retrofit2.Response
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.pointerInteropFilter
+import androidx.compose.ui.platform.LocalFocusManager
+
+import androidx.compose.ui.platform.LocalFocusManager
+
+
+
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
@@ -45,11 +56,17 @@ fun LoginScreen(navController: NavController) {
     val gradient = Brush.verticalGradient(
         colors = listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
     )
+    val focusManager = LocalFocusManager.current
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(gradient),
+            .background(gradient)
+            .pointerInteropFilter {
+                focusManager.clearFocus()
+                false
+            },
+
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -144,7 +161,7 @@ fun LoginScreen(navController: NavController) {
                         }
 
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                            errorMessage = "Error de red: ${t.message}"
+                            errorMessage = "Servido apagado. Intentelo de nuevo"
                         }
                     })
                 },

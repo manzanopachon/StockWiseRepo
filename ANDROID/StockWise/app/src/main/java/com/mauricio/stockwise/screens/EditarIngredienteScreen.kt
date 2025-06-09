@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Oswald
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,6 +71,7 @@ fun EditarIngredienteScreen(navController: NavController, ingredienteId: Long) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .hideKeyboardOnTap()
         ) {
             ingrediente?.let { ing ->
                 var nombre by remember { mutableStateOf(ing.nombre) }

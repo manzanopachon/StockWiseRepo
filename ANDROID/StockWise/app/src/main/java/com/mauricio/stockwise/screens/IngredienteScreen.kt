@@ -28,6 +28,7 @@ import com.mauricio.stockwise.model.IngredienteResponse
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
 import com.mauricio.stockwise.ui.theme.Oswald
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -103,6 +104,7 @@ fun IngredienteScreen(navController: NavController, restauranteId: Long) {
                 modifier = Modifier
                     .fillMaxSize()
                     .background(brush = gradient)
+                    .hideKeyboardOnTap()
                     .padding(16.dp),
                 contentAlignment = Alignment.TopCenter
             ) {

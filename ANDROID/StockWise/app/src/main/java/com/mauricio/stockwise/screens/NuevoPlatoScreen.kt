@@ -30,6 +30,7 @@ import com.mauricio.stockwise.model.PlatoDTO
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Caveat
 import com.mauricio.stockwise.ui.theme.Oswald
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -100,6 +101,7 @@ fun NuevoPlatoScreen(navController: NavController, restauranteId: Long) {
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .background(gradient)
+                    .hideKeyboardOnTap()
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {

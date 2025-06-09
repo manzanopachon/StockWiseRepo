@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import com.mauricio.stockwise.model.Ingrediente
 import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.ui.theme.Oswald
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -84,12 +85,14 @@ fun DetalleIngredienteScreen(navController: NavController, ingredienteId: Long) 
             Box(
                 modifier = Modifier
                     .fillMaxSize()
+
                     .background(
                         Brush.verticalGradient(
                             listOf(Color(0xFFE0F7FA), Color(0xFFB2EBF2), Color(0xFF80DEEA))
                         )
                     )
                     .padding(24.dp)
+                    .hideKeyboardOnTap()
             ) {
                 ingrediente?.let { ing ->
                     Column(

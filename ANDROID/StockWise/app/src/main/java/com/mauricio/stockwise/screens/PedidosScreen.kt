@@ -23,6 +23,7 @@ import com.mauricio.stockwise.retrofit.RetrofitClient
 import com.mauricio.stockwise.screens.utils.*
 import com.mauricio.stockwise.ui.theme.Caveat
 import com.mauricio.stockwise.ui.theme.Oswald
+import com.mauricio.stockwise.ui.utils.hideKeyboardOnTap
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,6 +63,7 @@ fun PedidosScreen(navController: NavController, restauranteId: Long) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .hideKeyboardOnTap()
             .background(brush = gradient)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
