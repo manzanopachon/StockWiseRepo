@@ -63,6 +63,10 @@ class MainActivity : ComponentActivity() {
                             LoginScreen(navController = navController)
                         }
 
+                        composable("restablecerContrasena") {
+                            RestablecerContrasenaScreen(navController)
+                        }
+
                         composable("verificarCodigo/{empleadoId}/{nombreEmpleado}/{restauranteId}") {
                             val empleadoId = it.arguments?.getString("empleadoId")?.toLong() ?: 0L
                             val nombreEmpleadoRaw = it.arguments?.getString("nombreEmpleado") ?: "Desconocido"

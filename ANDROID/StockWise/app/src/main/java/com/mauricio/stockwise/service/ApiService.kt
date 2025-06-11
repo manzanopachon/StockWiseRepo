@@ -168,4 +168,10 @@ interface ApiService {
     @POST("api/llamadas/atender/{id}")
     suspend fun marcarLlamadaComoAtendida(@Path("id") id: Long): Void
 
+    //RESTABLECER CONTRASENA
+
+    @POST("api/auth/forgot-password")
+    suspend fun solicitarResetPassword(@Query("correo") correo: String): retrofit2.Response<Void>
+
+
 }

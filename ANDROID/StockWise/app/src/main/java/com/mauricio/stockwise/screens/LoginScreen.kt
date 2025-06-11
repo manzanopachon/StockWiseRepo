@@ -180,6 +180,20 @@ fun LoginScreen(navController: NavController) {
                     fontWeight = FontWeight.Bold
                 )
             }
+            TextButton(
+                onClick = {
+                    navController.navigate("restablecerContrasena")
+                },
+                modifier = Modifier
+                    .padding(top = 16.dp)
+            ) {
+                Text(
+                    text = "🔁 ¿Olvidaste tu contraseña?",
+                    color = Color(0xFF00796B),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
         }
     }
 }
