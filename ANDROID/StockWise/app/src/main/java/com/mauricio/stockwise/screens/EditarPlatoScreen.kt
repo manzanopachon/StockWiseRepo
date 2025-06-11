@@ -32,6 +32,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+import retrofit2.HttpException
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditarPlatoScreen(
@@ -269,10 +271,13 @@ fun EditarPlatoScreen(
                                             plato = actualizado
                                             nuevaCantidad = ""
                                             ingredienteSeleccionadoId = null
+                                        } catch (e: HttpException) {
+                                            val errorBody = e.response()?.errorBody()?.string()
+                                            errorMensaje = "Error al añadir ingrediente: $errorBody"
                                         } catch (e: Exception) {
-                                            errorMensaje =
-                                                "Error al añadir ingrediente: ${e.localizedMessage}"
+                                            errorMensaje = "Error inesperado: ${e.localizedMessage}"
                                         }
+
                                     }
                                 }
                             },
