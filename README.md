@@ -42,7 +42,6 @@ El backend se organiza por capas: controladores REST, lógica de negocio, entida
 
 ## Capturas de pantalla
 
-> **Pendiente:** añadir capturas reales de la pantalla principal, inventario, creación de platos, gestión de pedidos y carta digital. Guardarlas en una carpeta `docs/img/` y enlazarlas aquí.
 
 <!-- Ejemplo de formato al añadir una imagen:
 ![Gestión de inventario](docs/img/inventario.png)
@@ -76,7 +75,6 @@ El repositorio contiene el código de la aplicación Android y del backend. Para
 4. Iniciar el backend y configurar la dirección de la API utilizada por el cliente Android.
 5. Abrir `ANDROID/StockWise/` con Android Studio y ejecutar la aplicación en un emulador o dispositivo compatible.
 
-> **Nota:** estos son pasos generales, no una guía de instalación verificada de extremo a extremo. Completar los comandos exactos de arranque, esquema de base de datos, configuración Android y datos de prueba cuando se hayan comprobado.
 
 ## Código y documentación
 
